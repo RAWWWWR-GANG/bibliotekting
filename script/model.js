@@ -15,6 +15,7 @@ export const model = {
         },
 
         overView:{
+            title: "",
             publisher: "",
             language: "",
             pages: "",
@@ -28,6 +29,7 @@ export const model = {
         },
 
         registerBook:{
+            title: "",
             publisher: "",
             language: "",
             pages: "",
