@@ -3,6 +3,8 @@ export const model = {
         currentPage: "home", // overView, registerBook
         isLoggedInn: false, // true
         darkMode: false, // true
+
+        pages: ["home", "overView", "registrerBook"]
     },
 
     viewState:{
@@ -10,6 +12,10 @@ export const model = {
             filterByRelease: "newest", // oldest
             filterReadingStatus: "all", // read reading unread
             searchbar: "",
+            
+        },
+
+        logginn:{
             userName: "",
             password: "",
         },
@@ -25,7 +31,7 @@ export const model = {
             rating: "",
             details: "",
             editBook: false, // true
-            readingStatus: "" // read, reading, unread
+            readingStatus: 0 // read, reading, unread
         },
 
         registerBook:{
@@ -38,18 +44,26 @@ export const model = {
             img: "",
             rating: "",
             details: "",
-            readingStatus: "" // read, reading, unread
+            readingStatus: 0 // read, reading, unread
         }
     },
 
     data:{
+        readingstatus:[
+            {id: 0, status: "unread"},
+            {id:1, status: "read"},
+            {id:2, status: "reading"}
+        ],
+
         admin:{
             username: "Admin",
             password: "123",
         },
 
         books: [
-            {publisher: "bøker og morro", 
+            {
+            id: 1,
+            publisher: "bøker og morro", 
             language: "norsk", 
             pages: "500", 
             isbn: "1129837461", 
@@ -60,7 +74,9 @@ export const model = {
             readingStatus: "read"
             },
             
-            {publisher: "bøker og morro", 
+            {
+            id: 2,    
+            publisher: "bøker og morro", 
             language: "english", 
             pages: "200", 
             isbn: "6329837422", 
