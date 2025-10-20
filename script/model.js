@@ -1,10 +1,10 @@
-export const model = {
+const model = {
     app:{
         currentPage: "home", // overView, registerBook
-        isLoggedInn: false, // true
+        isLoggedIn: false, // true
         darkMode: false, // true
 
-        pages: ["home", "overView", "registrerBook"]
+        pages: ["home", "overView", "registerBook"]
     },
 
     viewState:{
@@ -15,7 +15,7 @@ export const model = {
             
         },
 
-        logginn:{
+        loggin:{
             userName: "",
             password: "",
         },
@@ -62,6 +62,7 @@ export const model = {
 
         books: [
             {
+            title: "Fifty shades of Grey",
             id: 1,
             publisher: "bøker og morro", 
             language: "norsk", 
@@ -75,6 +76,7 @@ export const model = {
             },
             
             {
+            title: "Harry Potter", 
             id: 2,    
             publisher: "bøker og morro", 
             language: "english", 
