@@ -27,3 +27,22 @@ function deleteBook(id) {
     goToPage("home");
   }
 }
+
+function saveNewBook(){
+    const newBook = { ...model.viewState.registerBook };
+
+    //Lager bok ID 
+    newBook.id = model.data.books.length > 0
+    ? model.data.book[model.data.books.length - 1].id + 1
+    : 1;
+
+    model.data.books.push(newBook);
+
+    //Nullstiller  viewState.registerBook etter det er lagra
+    model.viewState.registerBook = {
+        
+
+    };
+
+    goToPage("home");
+}
