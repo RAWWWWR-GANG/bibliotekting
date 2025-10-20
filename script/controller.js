@@ -41,17 +41,29 @@ function saveNewBook(){
     //Nullstiller  viewState.registerBook etter det er lagra
     model.viewState.registerBook = {
         title: "",
-            publisher: "",
-            language: "",
-            pages: "",
-            isbn: "",
-            publisherYear:"",
-            img: "",
-            rating: "",
-            details: "",
-            readingStatus: 0
+        publisher: "",
+        language: "",
+        pages: "",
+        isbn: "",
+        publisherYear:"",
+        img: "",
+        rating: "",
+        details: "",
+        readingStatus: 0
 
     };
 
     goToPage("home");
+}
+function toggleDarkMode() {
+  model.app.darkMode = !model.app.darkMode;
+  applyTheme();
+}
+
+function applyTheme() {
+    if (model.app.darkMode) {
+        document.body.classList.add("dark-mode");
+    } else {
+        document.body.classList.remove("dark-mode");
+    }
 }

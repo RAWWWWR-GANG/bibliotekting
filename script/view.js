@@ -1,4 +1,5 @@
 function updateView(){
+    applyTheme();
     const page = model.app.currentPage
     if (page === "home"){
         updateViewHome();
@@ -14,6 +15,9 @@ function updateView(){
 
 function updateViewHome(){
     document.getElementById('app').innerHTML = /*HTML*/ `
+    <button onclick="toggleDarkMode()">
+    ${model.app.darkMode ? "Lys modus" : "Mørk modus"}
+    </button>
     <button onclick="goToPage('registerBook')">Legg til bok</button>
     <input>
     <div id="dateSort">Nyest</div>
