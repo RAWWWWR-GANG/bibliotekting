@@ -2,7 +2,7 @@ function overviewView(model) {
   const book = model.viewState.overview;
 
   if (book.editBook) {
-    // ✏️ Edit mode
+    //  Edit mode
     return `
       <div class="overview-edit">
         <h2>Edit Book</h2>
