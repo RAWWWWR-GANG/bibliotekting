@@ -7,6 +7,7 @@ function getBooks(){
         <div>${model.data.books[i].publisherYear}</div>
     </div>
     `
-    return html;
+    
     }
+    return html;
 }
