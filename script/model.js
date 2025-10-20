@@ -1,8 +1,8 @@
 export const model = {
     app:{
         currentPage: "home", // overView, registerBook
-        isLoggedInn: false, // true
-        darkMode: false, // true
+        isLoggedIn: false, // true
+        theme: "light", // or "dark"
 
         pages: ["home", "overView", "registrerBook"]
     },
@@ -15,7 +15,7 @@ export const model = {
             
         },
 
-        logginn:{
+        loggin:{
             userName: "",
             password: "",
         },
@@ -62,6 +62,7 @@ export const model = {
 
         books: [
             {
+            title: "",
             id: 1,
             publisher: "bøker og morro", 
             language: "norsk", 
@@ -75,6 +76,7 @@ export const model = {
             },
             
             {
+            title: "",
             id: 2,    
             publisher: "bøker og morro", 
             language: "english", 
