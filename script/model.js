@@ -1,7 +1,7 @@
 const model = {
     app:{
         currentPage: "home", // overView, registerBook
-        isLoggedInn: false, // true
+        isLoggedIn: false, // true
         darkMode: false, // true
 
         pages: ["home", "overView", "registerBook"]
@@ -62,6 +62,7 @@ const model = {
 
         books: [
             {
+            title: "Fifty shades of Grey",
             id: 1,
             publisher: "bøker og morro", 
             language: "norsk", 
@@ -75,6 +76,7 @@ const model = {
             },
             
             {
+            title: "Harry Potter", 
             id: 2,    
             publisher: "bøker og morro", 
             language: "english", 
