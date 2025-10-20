@@ -1,9 +1,9 @@
-function goToPage(pageName) {
-  model.app.currentPage = pageName;
+function goToPage(page) {
+  model.app.currentPage = page;
   updateView();
 }
 
-function startEditBook(id) {
+function startEditBook() {
   model.viewState.overview.editBook = true;
   updateView();
 }
@@ -14,19 +14,16 @@ function cancelEdit() {
 }
 
 function saveEditedBook(id) {
-  // Finn riktig bok i data
-  const updatedBook = model.viewState.overview;
-  const bookIndex = model.data.books.findIndex(b => b.id === id);
-
-  if (bookIndex !== -1) {
-    model.data.books[bookIndex] = { ...model.data.books[bookIndex], ...updatedBook };
-  }
-
-  model.viewState.overview.editBook = false;
+  const b = model.viewState.overview;
+  const index = model.data.books.findIndex(x => x.id === id);
+  if (index !== -1) model.data.books[index] = { ...model.data.books[index], ...b };
+  b.editBook = false;
   updateView();
 }
 
 function deleteBook(id) {
-  model.data.books = model.data.books.filter(book => book.id !== id);
-  goToPage("home");
+  if (confirm("Delete this book?")) {
+    model.data.books = model.data.books.filter(b => b.id !== id);
+    goToPage("home");
+  }
 }
