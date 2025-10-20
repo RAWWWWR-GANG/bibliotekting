@@ -1,5 +1,5 @@
 function getBooks(){
-    const html = ""
+    let html = ""
     for (let i = 0; i < model.data.books.length; i++){
     html += /*HTML*/ `<div id="${i}">
         <div>${model.data.books[i].title}</div>
