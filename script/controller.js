@@ -40,7 +40,16 @@ function saveNewBook(){
 
     //Nullstiller  viewState.registerBook etter det er lagra
     model.viewState.registerBook = {
-        
+        title: "",
+            publisher: "",
+            language: "",
+            pages: "",
+            isbn: "",
+            publisherYear:"",
+            img: "",
+            rating: "",
+            details: "",
+            readingStatus: 0
 
     };
 
