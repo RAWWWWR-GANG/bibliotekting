@@ -16,3 +16,23 @@ function updateOverView(bookIdx){
     </div>
     `
 }
+
+
+if (book.editBook) {
+        // EDIT MODE
+        document.getElementById('app').innerHTML = `
+            <h2>Edit Book</h2>
+            ${editField("Title", "title", book.title)}
+            ${editField("Publisher", "publisher", book.publisher)}
+            ${editField("Language", "language", book.language)}
+            ${editField("Pages", "pages", book.pages)}
+            ${editField("ISBN", "isbn", book.isbn)}
+            ${editField("Year", "publisherYear", book.publisherYear)}
+            ${editField("Rating", "rating", book.rating)}
+            ${statusDropdown(statusList, book.readingStatus)}
+            <label>Details</label>
+            <textarea oninput="model.viewState.overView.details = this.value">${book.details}</textarea>
+            <button onclick="saveEditedBook()">Save</button>
+            <button onclick="cancelEdit()">Cancel</button>
+        `;
+ }
