@@ -25,6 +25,17 @@ function updateViewHome(){
         </option>`).join('')}
     </select>
   `;
+  // dropdown for lesestatus filter
+  const rStatus = model.viewState.home.filterReadingStatus
+  const rStatusL = model.data.readingstatus
+  const readingFilter = `
+    <select onchange="model.viewState.home.filterReadingStatus = Number(this.value); filterByReadingStatus();">
+      ${rStatusL.map(s => `
+        <option value="${s.id}" ${s.id == rStatus ? 'selected' : ''}>
+          ${s.status}
+        </option>`).join('')}
+    </select>
+  `;
 
 
     document.getElementById('app').innerHTML = /*HTML*/ `
@@ -33,12 +44,14 @@ function updateViewHome(){
     </button>
     <button onclick="goToPage('registerBook')">Legg til bok</button>
     ${dateFilter}
+    ${readingFilter}
     <div id="Books">
     ${getBooks()}
     
     </div>
     `;
     sortDates();
+    filterByReadingStatus();
 
 }
 
@@ -57,6 +70,25 @@ function sortDates(){
   console.log(books, dates);
   document.getElementById('Books').innerHTML = getBooks(); 
 
+}
+// gjør om nummer verdier til states
+const readingStatusMap = {unread: 0, read: 1, reading: 2, all: 3};
+model.data.books.forEach(book => {
+  book.readingStatusId = readingStatusMap[book.readingStatus];
+});
+
+//filter for å hide bøker basert på lese status
+function filterByReadingStatus(){
+  const status = model.viewState.home.filterReadingStatus
+  const bookDivs = document.querySelectorAll('#Books .book-item');
+  if (status == 3){
+    div.classList.remove('hidden')
+  }
+  
+  bookDivs.forEach(div => {
+    div.classList.toggle('hidden', Number(div.dataset.status) !== status);
+  });
+  console.log(status)
 }
 
 
