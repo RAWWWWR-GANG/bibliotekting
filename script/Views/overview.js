@@ -50,24 +50,88 @@ function updateOverView(bookIdx){
  
         // EDIT MODE
         document.getElementById('app').innerHTML = `
-            ${editField}
+            ${editField(book)}
         `;
  }
 
 
 
-function editField(book){`
-<h2>Edit Book</h2>
-            ${editField("Title", "title", book.title)}
-            ${editField("Publisher", "publisher", book.publisher)}
-            ${editField("Language", "language", book.language)}
-            ${editField("Pages", "pages", book.pages)}
-            ${editField("ISBN", "isbn", book.isbn)}
-            ${editField("Year", "publisherYear", book.publisherYear)}
-            ${editField("Rating", "rating", book.rating)}
-            ${statusDropdown(statusList, book.readingStatus)}
-            <label>Details</label>
-            <textarea oninput="model.viewState.overView.details = this.value">${book.details}</textarea>
+function editField(book){
+    if (model.viewState.overView.editBook){
+        return
+    /*html*/ `
+    
+        <h2>Edit Book</h2>
+        <div> Tittel:
+        <input type="text"
+        value="${model.viewState.overView.title}" 
+        oninput="${model.viewState.overView.title = this.value}">
+        </div>
+            
+        <input type="text"
+        value="${model.viewState.overView.publisher}" 
+        oninput="${model.viewState.overView.publisher = this.value}">
+        </div>
+
+        <input type="text"
+        value="${model.viewState.overView.language}" 
+        oninput="${model.viewState.overView.language = this.value}">
+        </div>
+
+        <input type="text"
+        value="${model.viewState.overView.pages}" 
+        oninput="${model.viewState.overView.pages = this.value}">
+        </div>
+
+        <input type="text"
+        value="${model.viewState.overView.isbn}" 
+        oninput="${model.viewState.overView.isbn = this.value}">
+        </div>
+
+        <input type="text"
+        value="${model.viewState.overView.publisherYear}" 
+        oninput="${model.viewState.overView.publisherYear = this.value}">
+        </div>
+
+        <input type="text"
+        value="${model.viewState.overView.rating}" 
+        oninput="${model.viewState.overView.rating = this.value}">
+        </div>
+
+        <input type="text"
+        value="${model.viewState.overView.readingStatus}" 
+        oninput="${model.viewState.overView.readingStatus = this.value}">
+        </div>
+
+        <input type="text"
+        value="${model.viewState.overView.details}" 
+        oninput="${model.viewState.overView.details = this.value}">
+        </div>
+
+        <img 
+        value="${model.viewState.overView.img}" 
+        oninput="${model.viewState.overView.img = this.value}">
+        </div>
+            
             <button onclick="saveEditedBook()">Save</button>
             <button onclick="cancelEdit()">Cancel</button>`
+    } else {
+        model.viewState.overView.title = book.title
+        return `
+        <h1>${book.title}</h1>
+    <div>
+        <button onclick="${editBook = True}">Edit</button>
+        <div>Forlag: ${book.publisher}</div>
+        <div>Språk: ${book.language}</div>
+        <div>Sider: ${book.pages}</div>
+        <div>ISBN: ${book.isbn}</div>
+        <div>Utgivelsesår: ${book.publisherYear}</div>
+        <div>rating: ${book.rating} av 5</div>
+    </div>
+    <div>
+        <img src="${book.img}" alt="bildet">
+        <div>Informasjon: ${book.details}</div>
+    </div>
+    `
+    }
 }
