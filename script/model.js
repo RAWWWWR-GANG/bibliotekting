@@ -10,7 +10,7 @@ const model = {
     viewState:{
         home: {
             filterByRelease: 0, // nyest, eldst
-            filterReadingStatus: "all", // read reading unread
+            filterReadingStatus: 3, // read reading unread all
             searchbar: "",
             
         },
@@ -55,9 +55,10 @@ const model = {
         ],
 
         readingstatus:[
-            {id: 0, status: "unread"},
-            {id:1, status: "read"},
-            {id:2, status: "reading"}
+            {id: 0, status: "Unread"},
+            {id:1, status: "Read"},
+            {id:2, status: "Reading"},
+            {id:3, status: "All"}
         ],
 
         admin:{
@@ -68,7 +69,7 @@ const model = {
         books: [
             {
             title: "Fifty shades of Grey",
-            id: 1,
+            id: "book1",
             publisher: "bøker og morro", 
             language: "norsk", 
             pages: "500", 
@@ -77,12 +78,12 @@ const model = {
             img: "pictures/Arts_50-Shades-of-grey1.png", 
             rating: "5", 
             details: "Veldig kul og morsom bok",
-            readingStatus: "read"
+            readingStatus: "unread"
             },
             
             {
             title: "Harry Potter", 
-            id: 2,    
+            id: "book2",    
             publisher: "bøker og morro", 
             language: "english", 
             pages: "200", 
