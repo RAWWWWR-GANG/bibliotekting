@@ -14,10 +14,11 @@ function updateView(){
 
 
 function updateViewHome(){
+  // dropdown for Nyest / Eldst
   const dates = model.viewState.home.filterByRelease
   const dateList = model.data.dateState;
   const dateFilter = `
-    <select onchange="model.viewState.home.filterByRelease = this.value">
+    <select onchange="model.viewState.home.filterByRelease = Number(this.value); sortDates();">
       ${dateList.map(s => `
         <option value="${s.id}" ${s.id == dates ? 'selected' : ''}>
           ${s.state}
@@ -31,12 +32,30 @@ function updateViewHome(){
     ${model.app.darkMode ? "Lys modus" : "Mørk modus"}
     </button>
     <button onclick="goToPage('registerBook')">Legg til bok</button>
-    
+    ${dateFilter}
     <div id="Books">
     ${getBooks()}
-    ${dateFilter}
+    
     </div>
     `;
+    sortDates();
+
+}
+
+
+//sortering for Nyest / eldst
+function sortDates(){
+  const dates = model.viewState.home.filterByRelease;
+  const books = model.data.books;
+  if (dates === 0){
+    books.sort((a, b) => b.publisherYear - a.publisherYear);
+ 
+  }else{
+    books.sort((a, b) => a.publisherYear - b.publisherYear)
+    ;}
+
+  console.log(books, dates);
+  document.getElementById('Books').innerHTML = getBooks(); 
 
 }
 
