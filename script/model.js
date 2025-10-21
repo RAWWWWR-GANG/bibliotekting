@@ -9,7 +9,7 @@ const model = {
 
     viewState:{
         home: {
-            filterByRelease: "newest", // oldest
+            filterByRelease: 0, // nyest, eldst
             filterReadingStatus: "all", // read reading unread
             searchbar: "",
             
@@ -49,6 +49,11 @@ const model = {
     },
 
     data:{
+        dateState:[
+            {id: 0, state: "Nyest"},
+            {id: 1, state: "Eldst"}
+        ],
+
         readingstatus:[
             {id: 0, status: "unread"},
             {id:1, status: "read"},

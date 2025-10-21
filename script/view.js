@@ -13,16 +13,27 @@ function updateView(){
 
 
 function updateViewHome(){
+  const dates = model.viewState.home.filterByRelease
+  const dateList = model.data.dateState;
+  const dateFilter = `
+    <select onchange="model.viewState.home.filterByRelease = this.value">
+      ${dateList.map(s => `
+        <option value="${s.id}" ${s.id == dates ? 'selected' : ''}>
+          ${s.state}
+        </option>`).join('')}
+    </select>
+  `;
+
+
     document.getElementById('app').innerHTML = /*HTML*/ `
     <button onclick="goToPage('registerBook')">Legg til bok</button>
-    <input>
-    <div id="dateSort">Nyest</div>
-    <div>Sortering</div>
+    
     <div id="Books">
     ${getBooks()}
+    ${dateFilter}
     </div>
     `;
-    document.getElementById('dateSort').addEventListener('click', handleDateSort);
+
 }
 
 function updateOverView(){
@@ -63,7 +74,3 @@ function updateRegisterBook(){
   `;
 }
 
-function handleDateSort(){
-    console.log("yo");
-    
-}
