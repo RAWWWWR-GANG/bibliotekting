@@ -78,7 +78,7 @@ function updateRegisterBook(){
     ${content}
     ${statusField}
     <button onclick="saveNewBook()">Save</button>
-    <button onclick="gotoPage('home')">Cancel</button>
+    <button onclick="cancelRegisterBook()">Cancel</button>
   `;
 }
 
