@@ -48,7 +48,7 @@ function storeViewstate(){
 function updateOverView(bookIdx){
     const book = model.data.books[bookIdx]
  
-        // EDIT MODE
+        
         document.getElementById('app').innerHTML = `
             ${editField(book)}
         `;
@@ -58,8 +58,7 @@ function updateOverView(bookIdx){
 
 function editField(book){
     if (model.viewState.overView.editBook){
-        return
-    /*html*/ `
+        return /*html*/ `
     
         <h2>Edit Book</h2>
         <div> Tittel:
@@ -115,9 +114,11 @@ function editField(book){
             
             <button onclick="saveEditedBook()">Save</button>
             <button onclick="cancelEdit()">Cancel</button>`
-    } else {
+    } 
+    
+    else {
         model.viewState.overView.title = book.title
-        return `
+        return /*html*/ `
         <h1>${book.title}</h1>
     <div>
         <button onclick="${editBook = True}">Edit</button>
