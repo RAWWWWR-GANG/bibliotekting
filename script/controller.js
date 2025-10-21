@@ -85,3 +85,4 @@ function applyTheme() {
         document.body.classList.remove("dark-mode");
     }
 }
+
