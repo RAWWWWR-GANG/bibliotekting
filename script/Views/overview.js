@@ -1,49 +1,3 @@
-/* function updateOverView(bookIdx){
-    const book = model.data.books[bookIdx]
-    if (!model.viewState.overView.editBook){
-    document.getElementById("app").innerHTML = `
-    <h1>${book.title}</h1>
-    <div>
-        <button onclick="${editBook = True}">Edit</button>
-        <div>Forlag: ${book.publisher}</div>
-        <div>Språk: ${book.language}</div>
-        <div>Sider: ${book.pages}</div>
-        <div>ISBN: ${book.isbn}</div>
-        <div>Utgivelsesår: ${book.publisherYear}</div>
-        <div>rating: ${book.rating} av 5</div>
-    </div>
-    <div>
-        <img src="${book.img}" alt="bildet">
-        <div>Informasjon: ${book.details}</div>
-    </div>
-    `
-    storeViewstate()    
-} 
-    
-    else{
-        document.getElementById("app").innerHTML = `
-    <h1>${book.title}</h1>
-    <div>
-        <button onclick="${editBook = True}">Edit</button>
-        <div>Forlag: ${book.publisher}</div>
-        <div>Språk: ${book.language}</div>
-        <div>Sider: ${book.pages}</div>
-        <div>ISBN: ${book.isbn}</div>
-        <div>Utgivelsesår: ${book.publisherYear}</div>
-        <div>rating: ${book.rating} av 5</div>
-    </div>
-    <div>
-        <img src="${book.img}" alt="legg til bildet">
-        <div>Informasjon: ${book.details}</div>
-    </div>
-    `
-    }
-}
-*/
-
-function storeViewstate(){
-
-}
 
 function updateOverView(bookIdx){
     const book = model.data.books[bookIdx]
@@ -117,11 +71,21 @@ function editField(book){
     } 
     
     else {
-        model.viewState.overView.title = book.title
+        const OW = model.viewState.overView
+
+        OW.title = book.title
+        OW.publisher = book.publisher
+        OW.language = book.language
+        OW.pages = book.pages
+        OW.isbn = book.isbn
+        OW.publisherYear = book.publisherYear
+        OW.rating = book.rating
+        OW.img = book.img
+        OW.details = book.details
         return /*html*/ `
         <h1>${book.title}</h1>
     <div>
-        <button onclick="${editBook = True}">Edit</button>
+        <button onclick="${editBook = True, updateOverView(book)}">Edit</button>
         <div>Forlag: ${book.publisher}</div>
         <div>Språk: ${book.language}</div>
         <div>Sider: ${book.pages}</div>
