@@ -69,6 +69,7 @@ function cancelRegisterBook(){
         details: "",
         readingStatus: 0
     };
+    
     gotoPage("home");
 }
 
