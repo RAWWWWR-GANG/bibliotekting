@@ -45,7 +45,7 @@ function cancelRegisterBook(){
         readingStatus: 0
     };
     
-    gotoPage("home");
+    goToPage("home");
 }
 
 function toggleDarkMode() {
