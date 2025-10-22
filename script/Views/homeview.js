@@ -1,3 +1,21 @@
+function getBooks(){
+    let html = "";
+    for (let i = 0; i < model.data.books.length; i++){
+    const book = model.data.books[i];
+    html += /*HTML*/ `<div id="book${i}" class="book-item" data-status="${book.readingStatusId}" onclick="updateOverView(${i})">
+        <div>${model.data.books[i].title}</div>
+        <div>${model.data.books[i].publisher}</div>
+        <div>${model.data.books[i].publisherYear}</div>
+    </div>
+    `
+    
+    };
+    return html;
+}
+
+
+
+
 function updateViewHome(){
   // dropdown for Nyest / Eldst
   const dates = model.viewState.home.filterByRelease
@@ -67,29 +85,16 @@ function filterByReadingStatus(){
   const status = model.viewState.home.filterReadingStatus
   const bookDivs = document.querySelectorAll('#Books .book-item');
   if (status == 3){
+    bookDivs.forEach(div => {
     div.classList.remove('hidden')
-  }
+  })}else{
   
   bookDivs.forEach(div => {
     div.classList.toggle('hidden', Number(div.dataset.status) !== status);
-  });
+  })};
   console.log(status)
 }
 
 
 
 
-function getBooks(){
-    let html = "";
-    for (let i = 0; i < model.data.books.length; i++){
-    const book = model.data.books[i];
-    html += /*HTML*/ `<div id="book${i}" class="book-item" data-status="${book.readingStatusId}" onclick="updateOverView(${i})">
-        <div>${model.data.books[i].title}</div>
-        <div>${model.data.books[i].publisher}</div>
-        <div>${model.data.books[i].publisherYear}</div>
-    </div>
-    `
-    
-    };
-    return html;
-}
