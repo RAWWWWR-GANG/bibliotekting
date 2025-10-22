@@ -22,7 +22,7 @@
   cursor: pointer;
 }
 
-/* ====== Global styling ====== */
+/* Global styling */
 body {
   font-family: Arial, sans-serif;
   background-color: #f4f4f4;
@@ -41,14 +41,14 @@ body {
   box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
-/* ====== Titles ====== */
+/* Titles */
 h1, h2, h3 {
   text-align: center;
   color: #2c3e50;
   margin-top: 0;
 }
 
-/* ====== Buttons (global) ====== */
+/* Buttons (global) */
 button {
   background-color: #3498db;
   color: white;
@@ -81,7 +81,7 @@ button.secondary:hover {
   background-color: #616a6b;
 }
 
-/* ====== Input fields and form styling ====== */
+/* Input fields & form styling */
 input, textarea, select {
   width: 100%;
   padding: 8px;
@@ -98,7 +98,7 @@ label {
   margin-top: 10px;
 }
 
-/* ====== Book list styling (for home page) ====== */
+/* Book list styling (home page) */
 .book-item {
   padding: 10px 0;
   border-bottom: 1px solid #ddd;
