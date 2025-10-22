@@ -54,7 +54,7 @@ function updateViewHome(){
     </div>
     `;
     sortDates();
-    filterByReadingStatus();
+    
 
 }
 
@@ -72,7 +72,7 @@ function sortDates(){
 
   console.log(books, dates);
   document.getElementById('Books').innerHTML = getBooks(); 
-
+  filterByReadingStatus();
 }
 // gjør om nummer verdier til states
 const readingStatusMap = {unread: 0, read: 1, reading: 2, all: 3};
