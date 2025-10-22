@@ -19,52 +19,52 @@ function editField(book){
         <div> Tittel:
         <input type="text"
         value="${model.viewState.overView.title}" 
-        oninput="${model.viewState.overView.title = this.value}">
+        oninput="model.viewState.overView.title = this.value">
         </div>
             
         <input type="text"
         value="${model.viewState.overView.publisher}" 
-        oninput="${model.viewState.overView.publisher = this.value}">
+        oninput="model.viewState.overView.publisher = this.value">
         </div>
 
         <input type="text"
         value="${model.viewState.overView.language}" 
-        oninput="${model.viewState.overView.language = this.value}">
+        oninput="model.viewState.overView.language = this.value">
         </div>
 
         <input type="text"
         value="${model.viewState.overView.pages}" 
-        oninput="${model.viewState.overView.pages = this.value}">
+        oninput="model.viewState.overView.pages = this.value">
         </div>
 
         <input type="text"
         value="${model.viewState.overView.isbn}" 
-        oninput="${model.viewState.overView.isbn = this.value}">
+        oninput="model.viewState.overView.isbn = this.value">
         </div>
 
         <input type="text"
         value="${model.viewState.overView.publisherYear}" 
-        oninput="${model.viewState.overView.publisherYear = this.value}">
+        oninput="model.viewState.overView.publisherYear = this.value">
         </div>
 
         <input type="text"
         value="${model.viewState.overView.rating}" 
-        oninput="${model.viewState.overView.rating = this.value}">
+        oninput="model.viewState.overView.rating = this.value">
         </div>
 
         <input type="text"
         value="${model.viewState.overView.readingStatus}" 
-        oninput="${model.viewState.overView.readingStatus = this.value}">
+        oninput="model.viewState.overView.readingStatus = this.value">
         </div>
 
         <input type="text"
         value="${model.viewState.overView.details}" 
-        oninput="${model.viewState.overView.details = this.value}">
+        oninput="model.viewState.overView.details = this.value">
         </div>
 
         <img 
         value="${model.viewState.overView.img}" 
-        oninput="${model.viewState.overView.img = this.value}">
+        oninput="model.viewState.overView.img = this.value">
         </div>
             
             <button onclick="saveEditedBook(model.viewState.overView.currentBookIDX)">Save</button>
