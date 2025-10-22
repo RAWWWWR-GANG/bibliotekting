@@ -11,6 +11,6 @@ function saveEditedBook(bookIDX) {
     book.details = model.viewState.overView.details
 
     model.viewState.overView.editBook = false
-    updateOverView(bookIDX)
+    updateOverView(model.viewState.overView.currentBookIDX)
 }
 
