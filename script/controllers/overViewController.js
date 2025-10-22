@@ -1,12 +1,16 @@
-function saveEditedBook(book) {
-    book.title = model.viewState.title
-    book.publisher = model.publisher
-    book.language = model.language
-    book.pages = model.pages
-    book.isbn = model.isbn
-    book.publisherYear = model.publisherYear
-    book.rating = model.rating
-    book.img= model.img
-    book.details = model.details
+function saveEditedBook(bookIDX) {
+    const book = model.data.books[bookIDX]
+    book.title = model.viewState.overView.title
+    book.publisher = model.viewState.overView.publisher
+    book.language = model.viewState.overView.language
+    book.pages = model.viewState.overView.pages
+    book.isbn = model.viewState.overView.isbn
+    book.publisherYear = model.viewState.overView.publisherYear
+    book.rating = model.viewState.overView.rating
+    book.img= model.viewState.overView.img
+    book.details = model.viewState.overView.details
+
+    model.viewState.overView.editBook = false
+    updateOverView(model.viewState.overView.currentBookIDX)
 }
 

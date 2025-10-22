@@ -1,6 +1,7 @@
 
 function updateOverView(bookIdx){
     const book = model.data.books[bookIdx]
+    model.viewState.overView.currentBookIDX = bookIdx
  
         
         document.getElementById('app').innerHTML = `
@@ -18,55 +19,55 @@ function editField(book){
         <div> Tittel:
         <input type="text"
         value="${model.viewState.overView.title}" 
-        oninput="${model.viewState.overView.title = this.value}">
+        oninput="model.viewState.overView.title = this.value">
         </div>
             
         <input type="text"
         value="${model.viewState.overView.publisher}" 
-        oninput="${model.viewState.overView.publisher = this.value}">
+        oninput="model.viewState.overView.publisher = this.value">
         </div>
 
         <input type="text"
         value="${model.viewState.overView.language}" 
-        oninput="${model.viewState.overView.language = this.value}">
+        oninput="model.viewState.overView.language = this.value">
         </div>
 
         <input type="text"
         value="${model.viewState.overView.pages}" 
-        oninput="${model.viewState.overView.pages = this.value}">
+        oninput="model.viewState.overView.pages = this.value">
         </div>
 
         <input type="text"
         value="${model.viewState.overView.isbn}" 
-        oninput="${model.viewState.overView.isbn = this.value}">
+        oninput="model.viewState.overView.isbn = this.value">
         </div>
 
         <input type="text"
         value="${model.viewState.overView.publisherYear}" 
-        oninput="${model.viewState.overView.publisherYear = this.value}">
+        oninput="model.viewState.overView.publisherYear = this.value">
         </div>
 
         <input type="text"
         value="${model.viewState.overView.rating}" 
-        oninput="${model.viewState.overView.rating = this.value}">
+        oninput="model.viewState.overView.rating = this.value">
         </div>
 
         <input type="text"
         value="${model.viewState.overView.readingStatus}" 
-        oninput="${model.viewState.overView.readingStatus = this.value}">
+        oninput="model.viewState.overView.readingStatus = this.value">
         </div>
 
         <input type="text"
         value="${model.viewState.overView.details}" 
-        oninput="${model.viewState.overView.details = this.value}">
+        oninput="model.viewState.overView.details = this.value">
         </div>
 
         <img 
         value="${model.viewState.overView.img}" 
-        oninput="${model.viewState.overView.img = this.value}">
+        oninput="model.viewState.overView.img = this.value">
         </div>
             
-            <button onclick="saveEditedBook(book)">Save</button>
+            <button onclick="saveEditedBook(model.viewState.overView.currentBookIDX)">Save</button>
             <button onclick="cancelEdit()">Cancel</button>`
     } 
     
@@ -85,7 +86,7 @@ function editField(book){
         return /*html*/ `
         <h1>${book.title}</h1>
     <div>
-        <button onclick="${editBook = True, updateOverView(book)}">Edit</button>
+        <button id="editbtn" onclick="model.viewState.overView.editBook = true; updateOverView(${model.viewState.overView.currentBookIDX})">Edit</button>
         <div>Forlag: ${book.publisher}</div>
         <div>Språk: ${book.language}</div>
         <div>Sider: ${book.pages}</div>
