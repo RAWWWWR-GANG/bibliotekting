@@ -67,7 +67,7 @@ function editField(book){
         oninput="${model.viewState.overView.img = this.value}">
         </div>
             
-            <button onclick="saveEditedBook(currentBookIDX)">Save</button>
+            <button onclick="saveEditedBook(model.viewState.overView.currentBookIDX)">Save</button>
             <button onclick="cancelEdit()">Cancel</button>`
     } 
     
