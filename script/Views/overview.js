@@ -1,6 +1,7 @@
 
 function updateOverView(bookIdx){
     const book = model.data.books[bookIdx]
+    model.viewState.overView.currentBookIDX = bookIdx
  
         
         document.getElementById('app').innerHTML = `
@@ -85,7 +86,7 @@ function editField(book){
         return /*html*/ `
         <h1>${book.title}</h1>
     <div>
-        <button onclick="${editBook = True, updateOverView(book)}">Edit</button>
+        <button id="editbtn" onclick="model.viewState.overView.editBook = true; updateOverView(${model.viewState.overView.currentBookIDX})">Edit</button>
         <div>Forlag: ${book.publisher}</div>
         <div>Språk: ${book.language}</div>
         <div>Sider: ${book.pages}</div>

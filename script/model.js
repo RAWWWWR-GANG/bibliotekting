@@ -31,7 +31,8 @@ const model = {
             rating: "",
             details: "",
             editBook: false, // true
-            readingStatus: 0 // read, reading, unread
+            readingStatus: 0, // read, reading, unread
+            currentBookIDX: null,
         },
 
         registerBook:{
