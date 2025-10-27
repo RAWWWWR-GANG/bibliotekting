@@ -1,10 +1,10 @@
 const model = {
     app:{
-        currentPage: "home", // overView, registerBook
+        currentPage: "home", // overView, registerBook, login
         isLoggedIn: false, // true
         darkMode: false, // true
 
-        pages: ["home", "overView", "registerBook"]
+        pages: ["home", "overView", "registerBook", "login"]
     },
 
     viewState:{
@@ -17,7 +17,7 @@ const model = {
 
         loggin:{
             userName: "",
-            password: "",
+            passWord: "",
         },
 
         overView:{

@@ -10,6 +10,9 @@ function updateView(){
     else if (page === "registerBook"){
         updateRegisterBook();
         }
+    else if (page === "login"){
+        updateLoginView();
+        }
 }
 
 

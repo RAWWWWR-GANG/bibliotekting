@@ -46,6 +46,7 @@ function updateViewHome(){
     ${model.app.darkMode ? "Lys modus" : "Mørk modus"}
     </button>
     <button onclick="goToPage('registerBook')">Legg til bok</button>
+    <button onclick="goToPage('login')"> Logg in </button>
     ${dateFilter}
     ${readingFilter}
     <div id="Books">
