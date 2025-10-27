@@ -10,7 +10,25 @@ function saveEditedBook(bookIDX) {
     book.img= model.viewState.overView.img
     book.details = model.viewState.overView.details
 
-    model.viewState.overView.editBook = false
+    emptyOverView()
     updateOverView(model.viewState.overView.currentBookIDX)
 }
 
+function cancelEdit(){
+    emptyOverView()
+    updateOverView(model.viewState.overView.currentBookIDX)
+}
+
+function emptyOverView(){
+   const overView = model.viewState.overView
+   overView.title = ""
+   overView.publisher = ""
+   overView.language = ""
+   overView.pages = ""
+   overView.isbn = ""
+   overView.publisherYear = ""
+   overView.rating = ""
+   overView.img = ""
+   overView.details = ""
+   overView.editBook = false
+}
