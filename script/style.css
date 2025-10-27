@@ -134,7 +134,7 @@ label {
 .dark-mode {
  background-color: #2c1e15; /* Dyp brun bakgrunn */
   color: #f5deb3;            /* Lys beige tekst (som gammelt bokpapir) */
-  background-image: url('..pictures/dark-bookshelf.jpg'); /* Bokhylle bakgrunn */
+  background-image: url('../pictures/dark-bookshelf.jpg'); /* Bokhylle bakgrunn */
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
