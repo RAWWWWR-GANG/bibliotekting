@@ -32,3 +32,26 @@ function emptyOverView(){
    overView.details = ""
    overView.editBook = false
 }
+
+
+function getStars(currentRating){
+    let html = ""
+    for (let i = 1; i <=5; i++){
+        
+        let color;
+
+        if (i <= currentRating){
+            color = "yellow"
+        } else{
+            color = "gray"
+        }
+
+        html += /*html*/`
+        <div style="font-size: var; cursor: pointer; color:${color};"
+        onclick="model.viewState.overView.rating = ${i};
+         updateOverView(model.viewState.overView.currentBookIDX)">☆</div>
+        `
+
+    }
+    return html;
+}

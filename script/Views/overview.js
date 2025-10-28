@@ -53,9 +53,9 @@ function editField(book){
         </div>
 
         <div>Rating:
-        <input type="text"
-        value="${model.viewState.overView.rating}" 
-        oninput="model.viewState.overView.rating = this.value">
+        <div id="stars">
+            ${getStars(model.viewState.overView.rating ?? 0)}
+        </div>
         </div>
 
         <div>Lese status:

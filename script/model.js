@@ -28,7 +28,7 @@ const model = {
             isbn: "",
             publisherYear:"",
             img: "",
-            rating: "",
+            rating: 0,
             details: "",
             editBook: false, // true
             readingStatus: 0, // read, reading, unread
@@ -77,7 +77,7 @@ const model = {
             isbn: "1129837461", 
             publisherYear:"2000", 
             img: "pictures/Arts_50-Shades-of-grey1.png", 
-            rating: "5", 
+            rating: 5, 
             details: "Veldig kul og morsom bok",
             readingStatus: "unread"
             },
@@ -91,7 +91,7 @@ const model = {
             isbn: "6329837422", 
             publisherYear:"2005", 
             img: "pictures/HP.jpg", 
-            rating: "2", 
+            rating: 2, 
             details: "trollmen og hekser går på eventyr",
             readingStatus: "read"
             }
