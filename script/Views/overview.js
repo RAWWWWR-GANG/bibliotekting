@@ -52,10 +52,11 @@ function editField(book){
         oninput="model.viewState.overView.publisherYear = this.value">
         </div>
 
-        <div>Rating:
-        <input type="text"
-        value="${model.viewState.overView.rating}" 
-        oninput="model.viewState.overView.rating = this.value">
+        <div>
+            <div>
+                ${getStars(model.viewState.overView.rating)}
+            </div>
+        
         </div>
 
         <div>Lese status:
