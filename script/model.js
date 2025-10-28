@@ -2,6 +2,7 @@ const model = {
     app:{
         currentPage: "home", // overView, registerBook, login
         isLoggedIn: false, // true
+        adminIsLoggedIn: false, //true
         darkMode: false, // true
 
         pages: ["home", "overView", "registerBook", "login"]
@@ -65,6 +66,11 @@ const model = {
         admin:{
             username: "Admin",
             password: "123",
+        },
+
+        users:{
+            username: [],
+            password: [],
         },
 
         books: [
