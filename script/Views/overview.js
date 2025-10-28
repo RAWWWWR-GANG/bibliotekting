@@ -105,7 +105,7 @@ function editField(book){
         <div>Sider: ${book.pages}</div>
         <div>ISBN: ${book.isbn}</div>
         <div>Utgivelsesår: ${book.publisherYear}</div>
-        <div>rating: ${book.rating} av 5</div>
+        <div>rating: ${getRating(model.viewState.overView.rating)}</div>
     </div>
     <div class="book">
         <img src="${book.img}" alt="bildet" class="book-img">

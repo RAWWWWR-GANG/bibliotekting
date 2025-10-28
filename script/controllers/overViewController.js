@@ -55,3 +55,21 @@ function getStars(currentRating){
     }
     return html;
 }
+
+function getRating(currentRating){
+    let html = ""
+    for (let i = 1; i <=5; i++){
+        let starClass = "";
+        if (i <= currentRating) {
+            starClass = "star-filled"; // gul
+        } else {
+            starClass = "star-empty"; // grå
+        }
+        html += /*html*/ `
+        <span class="star ${starClass}">
+            ★
+        </span>
+    `
+    }
+    return html
+}
