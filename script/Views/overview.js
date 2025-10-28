@@ -95,6 +95,7 @@ function editField(book){
         return /*html*/ `
         <h1>${book.title}</h1>
     <div>
+        <button id="homebtn" onclick="goToPage('home')" >Home</button>
         <button id="editbtn" onclick="model.viewState.overView.editBook = true; updateOverView(${model.viewState.overView.currentBookIDX})">Edit</button>
         <div>Forlag: ${book.publisher}</div>
         <div>Språk: ${book.language}</div>
