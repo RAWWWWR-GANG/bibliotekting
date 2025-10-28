@@ -53,9 +53,9 @@ function editField(book){
         </div>
 
         <div>Rating:
-        <div id="stars">
-            ${getStars(model.viewState.overView.rating ?? 0)}
-        </div>
+        <input type="text"
+        value="${model.viewState.overView.rating}" 
+        oninput="model.viewState.overView.rating = this.value">
         </div>
 
         <div>Lese status:
@@ -95,7 +95,6 @@ function editField(book){
         return /*html*/ `
         <h1>${book.title}</h1>
     <div>
-        <button id="homebtn" onclick="goToPage('home')" >Home</button>
         <button id="editbtn" onclick="model.viewState.overView.editBook = true; updateOverView(${model.viewState.overView.currentBookIDX})">Edit</button>
         <div>Forlag: ${book.publisher}</div>
         <div>Språk: ${book.language}</div>
@@ -104,9 +103,9 @@ function editField(book){
         <div>Utgivelsesår: ${book.publisherYear}</div>
         <div>rating: ${book.rating} av 5</div>
     </div>
-    <div>
-        <img src="${book.img}" alt="bildet">
-        <div>Informasjon: ${book.details}</div>
+    <div class="book">
+        <img src="${book.img}" alt="bildet" class="book-img">
+        <div class="book-details">Informasjon: ${book.details}</div>
     </div>
     `
     }

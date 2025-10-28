@@ -213,3 +213,23 @@ label {
 .star-empty {
   color: rgb(88, 87, 87); /* GRÅ */
 }
+
+/* INFO OM BOK */
+.book {
+  display: flex;           
+  align-items: flex-start; 
+  gap: 16px;               
+  margin-bottom: 20px;     
+}
+
+.book-img {
+  width: 150px;            
+  height: auto;
+  border-radius: 8px;
+}
+
+.book-details {
+  max-width: 400px;        
+  color: #333;
+  font-size: 1rem;
+}
