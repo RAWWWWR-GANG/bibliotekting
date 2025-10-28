@@ -9,6 +9,7 @@ function updateLoginView(){
     <input onchange="tempPassWord =(this.value)";>
     <button onclick="goToPage('home')">Cancel</button>
     <button onclick="loggIn()">Logg in</button>
+    <button onclick="registerUser()">Registrer bruker</button>
     `
 }
 
@@ -24,4 +25,9 @@ function loggIn(){
         alert("Feil passord")
     }
     console.log(tempUserName,tempPassWord,model.app.isLoggedIn);
+}
+
+function registerUser(){
+    let userName = model.data.users.username
+    let password = model.data.users.password
 }
