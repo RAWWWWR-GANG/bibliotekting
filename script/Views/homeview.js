@@ -1,17 +1,28 @@
-function getBooks(){
-    let html = "";
-    for (let i = 0; i < model.data.books.length; i++){
-    const book = model.data.books[i];
-    html += /*HTML*/ `<div id="book${i}" class="book-item" data-status="${book.readingStatusId}" onclick="updateOverView(${i})">
-        <div>${model.data.books[i].title}</div>
-        <div>${model.data.books[i].publisher}</div>
-        <div>${model.data.books[i].publisherYear}</div>
-        <div>${model.data.books[i].language}</div>
+function getBooks() {
+  let books = model.data.books;
+  let html = `<div class="book-list">`; // wrapper for flex layout
+
+  for (let i = 0; i < books.length; i++) {
+    const book = books[i];
+    html += `
+      <div class="book-card" onclick="updateOverView(${i})" data-status="${book.readingStatusId}">
+        <img src="${book.img}" alt="${book.title}">
+        <div class="book-card-title">${book.title}</div>
+        ${getStars(book.rating)} 
+      </div>
+    `;
+  }
+
+  // Visuell "legg til bok"-knapp
+  html += `
+    <div class="book-card" onclick="goToPage('registerBook')">
+      <div style="font-size: 50px; padding-top: 70px; color: gray;">➕</div>
+      <div class="book-card-title">Legg til bok</div>
     </div>
-    `
-    
-    };
-    return html;
+  `;
+
+  html += `</div>`;
+  return html;
 }
 
 
@@ -44,7 +55,7 @@ function updateViewHome(){
 
     document.getElementById('app').innerHTML = /*HTML*/ `
     <button onclick="toggleDarkMode()">
-    ${model.app.darkMode ? "Lys modus" : "Mørk modus"}
+    ${model.app.darkMode ? "Lys modus" : "Lese modus"}
     </button>
     <button onclick="goToPage('registerBook')">Legg til bok</button>
     <button onclick="goToPage('login')"> Logg in </button>
@@ -85,7 +96,7 @@ model.data.books.forEach(book => {
 //filter for å hide bøker basert på lese status
 function filterByReadingStatus(){
   const status = model.viewState.home.filterReadingStatus
-  const bookDivs = document.querySelectorAll('#Books .book-item');
+  const bookDivs = document.querySelectorAll('#Books .book-card');
   if (status == 3){
     bookDivs.forEach(div => {
     div.classList.remove('hidden')
