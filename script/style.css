@@ -203,7 +203,6 @@ label {
 .stars {
   font-size: 28px;
   cursor: pointer;
-  display: inline-block;
 }
 
 .star-filled {
@@ -230,6 +229,6 @@ label {
 }
 
 .book-details {
-  max-width: 400px;        
+  max-width: 400px;       
   font-size: 1rem;
 }
