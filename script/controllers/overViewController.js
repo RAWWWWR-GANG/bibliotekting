@@ -38,20 +38,20 @@ function getStars(currentRating){
     let html = ""
     for (let i = 1; i <=5; i++){
         
-        let color;
-
-        if (i <= currentRating){
-            color = "yellow"
-        } else{
-            color = "gray"
+        let starClass = "";
+        if (i <= currentRating) {
+            starClass = "star-filled"; // gul
+        } else {
+            starClass = "star-empty"; // grå
         }
 
-        html += /*html*/`
-        <div style="font-size: var; cursor: pointer; color:${color};"
-        onclick="model.viewState.overView.rating = ${i};
-         updateOverView(model.viewState.overView.currentBookIDX)">☆</div>
-        `
-
+         html += /*html*/`
+        <span class="star ${starClass}"
+             onclick="model.viewState.overView.rating = ${i};
+             updateOverView(model.viewState.overView.currentBookIDX)">
+            ★
+        </span>
+        `;
     }
     return html;
 }

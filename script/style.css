@@ -197,3 +197,19 @@ label {
     max-width: 100%;
   }
 }
+
+/* Stars and rating */
+
+.stars {
+  font-size: 28px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.star-filled {
+  color: #FFD700; /* GUL */
+}
+
+.star-empty {
+  color: rgb(88, 87, 87); /* GRÅ */
+}
