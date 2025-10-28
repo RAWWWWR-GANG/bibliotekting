@@ -9,7 +9,7 @@ function updateLoginView(){
     <input onchange="tempPassWord =(this.value)";>
     <button onclick="goToPage('home')">Cancel</button>
     <button onclick="loggIn()">Logg in</button>
-    <button onclick="registerUser()">Register bruker</button>
+    <button onclick="registerUser()">Registrer bruker</button>
     `
 }
 
