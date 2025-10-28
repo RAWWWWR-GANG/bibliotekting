@@ -6,6 +6,7 @@ function getBooks(){
         <div>${model.data.books[i].title}</div>
         <div>${model.data.books[i].publisher}</div>
         <div>${model.data.books[i].publisherYear}</div>
+        <div>${model.data.books[i].language}</div>
     </div>
     `
     
