@@ -16,7 +16,7 @@ function getBooks() {
   // Visuell "legg til bok"-knapp
   html += `
     <div class="book-card" onclick="goToPage('registerBook')">
-      <div style="font-size: 50px; padding-top: 70px; color: gray;">➕</div>
+      <div class="plus-icon">+</div>
       <div class="book-card-title">Legg til bok</div>
     </div>
   `;
@@ -93,7 +93,7 @@ model.data.books.forEach(book => {
   book.readingStatusId = readingStatusMap[book.readingStatus];
 });
 
-//filter for å hide bøker basert på lese status
+//filter for å gjemme bøker basert på lese status
 function filterByReadingStatus(){
   const status = model.viewState.home.filterReadingStatus
   const bookDivs = document.querySelectorAll('#Books .book-card');

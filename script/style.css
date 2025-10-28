@@ -43,7 +43,7 @@ body {
 
 h1, h2, h3 {
   text-align: center;
-  color: #2c3e50;
+  color: #746018;
   margin-top: 0;
 }
 
@@ -175,4 +175,17 @@ button:hover {
 .book-details {
   max-width: 400px;       
   font-size: 1rem;
+}
+
+/* Plussikon på legg til bok */
+.plus-icon {
+  font-size: 60px;
+  padding-top: 70px;
+  font-weight: bold;
+  color: #8B4513; 
+  text-align: center;
+}
+
+.dark-mode .plus-icon {
+  color: #D4AF37; 
 }

@@ -56,7 +56,7 @@ function getStars(currentRating) {
         else if (isEditMode) {
             html += `
                 <span class="star ${starClass}" 
-                      onclick="model.viewState.overView.rating = ${i}; updateOverView(model.viewState.overView.currentBookIDX)"
+                      onclick="model.viewState.overView.rating = ${i}; updateOverView(model.viewState.overView.currentBookIDX)">
 
                     ★
                 </span>`;
