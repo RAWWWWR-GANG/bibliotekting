@@ -68,10 +68,19 @@ const model = {
             password: "123",
         },
 
-        users:{
-            username: [],
-            password: [],
-        },
+        users:[
+            {
+                id: "user0",
+                username: "Geir12",
+                password: "123"
+            },
+            
+            {
+                id: "user1",
+                username: "Emil12",
+                password: "123",
+            }
+        ],
 
         books: [
             {

@@ -2,7 +2,7 @@ function getBooks() {
   let books = model.data.books;
   let html = `<div class="book-list">`;
 
-  // 🔥 Legg til bok først
+  // Legg til bok boks først
   html += `
       <div class="book-card add-card" onclick="goToPage('registerBook')">
           <div class="plus-icon">&#43;</div>
@@ -59,7 +59,6 @@ function updateViewHome(){
     <button onclick="toggleDarkMode()">
     ${model.app.darkMode ? "Lys modus" : "Lese modus"}
     </button>
-    <button onclick="goToPage('registerBook')">Legg til bok</button>
     <button onclick="goToPage('login')"> Logg in </button>
     ${dateFilter}
     ${readingFilter}
