@@ -14,7 +14,7 @@ function getBooks() {
   for (let i = 0; i < books.length; i++) {
       const book = books[i];
       html += `
-          <div class="book-card" onclick="updateOverView(${i})">
+          <div class="book-card ${book.title} ${book.publisher}" onclick="updateOverView(${i})">
               <img src="${book.img}" alt="${book.title}">
               <div class="book-card-title">${book.title}</div>
               ${getStars(book.rating)}
@@ -78,6 +78,11 @@ function createSearchbar(){
   <input type = "text" value ="${model.viewState.home.searchbar}"
   oninput="model.viewState.home.searchbar = this.value ;filterBySearchbar()">
   </div>`
+}
+
+function filterBySearchbar(){
+const searchValue = model.viewState.home.searchbar
+const books = model.data.books 
 }
 
 
