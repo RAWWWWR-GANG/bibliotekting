@@ -5,7 +5,7 @@ function updateView(){
         updateViewHome();
     }
     else if (page === "overView"){
-        updateOverView();
+        updateOverView(model.viewState.overView.currentBookIDX);
     }
     else if (page === "registerBook"){
         updateRegisterBook();

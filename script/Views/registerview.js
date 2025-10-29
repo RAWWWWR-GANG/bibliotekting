@@ -1,34 +1,58 @@
-function updateRegisterBook(){
-    const book = model.viewState.registerBook;
-    const statusList = model.data.readingstatus;
+function updateRegisterBook() {
+  const book = model.viewState.registerBook;
 
-    let content = "";
-    for (let key in book) {
-        if (key === "readingStatus") continue;
-        content += `
-        <label>${key}</label>
-      <input type="text" value="${book[key] || ''}"
-             oninput="model.viewState.registerBook.${key} = this.value">
-    `;
-  }
+  document.getElementById("app").innerHTML = `
+    <h2>Registrer ny bok</h2>
 
-  // Lag dropdown for readingStatus
-  const statusField = `
-    <label>Reading Status</label>
-    <select onchange="model.viewState.registerBook.readingStatus = this.value">
-      ${statusList.map(s => `
-        <option value="${s.id}" ${s.id == book.readingStatus ? 'selected' : ''}>
-          ${s.status}
-        </option>`).join('')}
-    </select>
-  `;
+    <label>Tittel</label>
+    <input type="text" value="${book.title}" 
+      oninput="model.viewState.registerBook.title = this.value; updateView()">
 
-  // Samle alt og vis
-  document.getElementById('app').innerHTML = `
-    <h2>Register New Book</h2>
-    ${content}
-    ${statusField}
-    <button onclick="saveNewBook()">Save</button>
-    <button onclick="goToPage('home')">Cancel</button>
+    <label>Forlag</label>
+    <input type="text" value="${book.publisher}" 
+      oninput="model.viewState.registerBook.publisher = this.value;">
+
+    <label>Språk</label>
+    <input type="text" value="${book.language}" 
+      oninput="model.viewState.registerBook.language = this.value;">
+
+    <label>Antall sider</label>
+    <input type="number" value="${book.pages}" 
+      oninput="model.viewState.registerBook.pages = this.value;">
+
+    <label>ISBN</label>
+    <input type="text" value="${book.isbn}" 
+      oninput="model.viewState.registerBook.isbn = this.value;">
+
+    <label>Utgivelsesår</label>
+    <input type="number" value="${book.publisherYear}" 
+      oninput="model.viewState.registerBook.publisherYear = this.value;">
+
+    <label>Beskrivelse</label>
+    <textarea oninput="model.viewState.registerBook.details = this.value">${book.details}</textarea>
+
+    <label>Bilde (URL)</label>
+    <input type="text" value="${book.img}" placeholder="https://..."
+      oninput="model.viewState.registerBook.img = this.value; updateView()">
+
+    <label>Rating</label>
+    ${getStars(book.rating)}
+
+    <button onclick="saveNewBook()">Lagre bok</button>
+    <button onclick="goToPage('home')" class="secondary">Avbryt</button>
+
+    <h3>Forhåndsvisning</h3>
+    <div class="book-list">
+      <div class="book-card">
+        <img src="${book.img || 'pictures/placeholder.jpg'}" alt="Forhåndsvisning">
+        <div class="book-card-title">${book.title || 'Uten tittel'}</div>
+        ${getStars(book.rating)}
+        <p><strong>Forlag:</strong> ${book.publisher || '---'}</p>
+        <p><strong>Språk:</strong> ${book.language || '---'}</p>
+        <p><strong>Sider:</strong> ${book.pages || '---'}</p>
+        <p><strong>Utgivelsesår:</strong> ${book.publisherYear || '---'}</p>
+        <p><strong>Beskrivelse:</strong> ${book.details || 'Ingen beskrivelse'}</p>
+      </div>
+    </div>
   `;
 }

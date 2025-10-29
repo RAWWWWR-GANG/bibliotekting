@@ -3,7 +3,7 @@ const model = {
         currentPage: "home", // overView, registerBook, login
         isLoggedIn: false, // true
         adminIsLoggedIn: false, //true
-        darkMode: false, // true
+        darkMode: true, // false
 
         pages: ["home", "overView", "registerBook", "login"]
     },
@@ -86,28 +86,28 @@ const model = {
             {
             title: "Fifty shades of Grey",
             id: "book1",
-            publisher: "bøker og morro", 
-            language: "norsk", 
-            pages: "500", 
+            publisher: "E.L. James", 
+            language: "english", 
+            pages: "514", 
             isbn: "1129837461", 
-            publisherYear:"2000", 
+            publisherYear:"2011", 
             img: "pictures/Arts_50-Shades-of-grey1.png", 
             rating: 5, 
-            details: "Veldig kul og morsom bok",
+            details: "Fifty Shades er en erotisk bokserie av E.L. James",
             readingStatus: "unread"
             },
             
             {
             title: "Harry Potter", 
             id: "book2",    
-            publisher: "bøker og morro", 
+            publisher: "J. K. Rowling", 
             language: "english", 
-            pages: "200", 
+            pages: "672", 
             isbn: "6329837422", 
             publisherYear:"2005", 
             img: "pictures/HP.jpg", 
             rating: 2, 
-            details: "trollmen og hekser går på eventyr",
+            details: "Harry Potter og Halvblodsprinsen er den sjette romanen i J.K. Rowlings populære Harry Potter-serie",
             readingStatus: "read"
             }
         ]

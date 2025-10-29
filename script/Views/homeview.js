@@ -1,17 +1,31 @@
-function getBooks(){
-    let html = "";
-    for (let i = 0; i < model.data.books.length; i++){
-    const book = model.data.books[i];
-    html += /*HTML*/ `<div id="book${i}" class="book-item" data-status="${book.readingStatusId}" onclick="updateOverView(${i})">
-        <div>${model.data.books[i].title}</div>
-        <div>${model.data.books[i].publisher}</div>
-        <div>${model.data.books[i].publisherYear}</div>
-    </div>
-    `
-    
-    };
-    return html;
+function getBooks() {
+  let books = model.data.books;
+  let html = `<div class="book-list">`;
+
+  // Legg til bok boks først
+  html += `
+      <div class="book-card add-card" onclick="goToPage('registerBook')">
+          <div class="plus-icon">&#43;</div>
+          <div class="book-card-title">Legg til bok</div>
+      </div>
+  `;
+
+  // Deretter eksisterende bøker
+  for (let i = 0; i < books.length; i++) {
+      const book = books[i];
+      html += `
+          <div class="book-card" onclick="updateOverView(${i})">
+              <img src="${book.img}" alt="${book.title}">
+              <div class="book-card-title">${book.title}</div>
+              ${getStars(book.rating)}
+          </div>
+      `;
+  }
+
+  html += `</div>`;
+  return html;
 }
+
 
 
 
@@ -43,9 +57,8 @@ function updateViewHome(){
 
     document.getElementById('app').innerHTML = /*HTML*/ `
     <button onclick="toggleDarkMode()">
-    ${model.app.darkMode ? "Lys modus" : "Mørk modus"}
+    ${model.app.darkMode ? "Lys modus" : "Lese modus"}
     </button>
-    <button onclick="goToPage('registerBook')">Legg til bok</button>
     <button onclick="goToPage('login')"> Logg in </button>
     ${dateFilter}
     ${readingFilter}
@@ -81,10 +94,10 @@ model.data.books.forEach(book => {
   book.readingStatusId = readingStatusMap[book.readingStatus];
 });
 
-//filter for å hide bøker basert på lese status
+//filter for å gjemme bøker basert på lese status
 function filterByReadingStatus(){
   const status = model.viewState.home.filterReadingStatus
-  const bookDivs = document.querySelectorAll('#Books .book-item');
+  const bookDivs = document.querySelectorAll('#Books .book-card');
   if (status == 3){
     bookDivs.forEach(div => {
     div.classList.remove('hidden')
