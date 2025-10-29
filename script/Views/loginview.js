@@ -3,14 +3,23 @@
 function updateLoginView(){
 
     document.getElementById('app').innerHTML = /*HTML*/ `
-    Username
+    
+    <div>
+    Username :
     <input onchange="tempUserName =(this.value)">
-    Password
+    </div>
+    Password  :
     <input onchange="tempPassWord =(this.value)">
-    <button onclick="goToPage('home')">Cancel</button>
+    
+    <div>
+    <button onclick="goToPage('home')">Tilbake</button>
     <button onclick="loggIn()">Logg in</button>
     <button onclick="registerUser()">Registrer bruker</button>
+    </div>
     `
+    
+    tempUserName = "";
+    tempPassWord = "";
 }
 
 function loggIn(){
@@ -41,9 +50,18 @@ function loggIn(){
 }
 
 function registerUser(){
+    // sjekker om brukernavn allerede er i bruk
+    const users = model.data.users;
+    const existingUser = users.find(
+        user => user.username === tempUserName
+    );
     // gir feilmelding hvis felt er tomme
     if(!tempUserName || !tempPassWord){
         alert("Skriv")
+
+    // hvis brukernavn er i bruk
+    }else if(existingUser){
+        alert("Bruker ekisterer allerede")
     }else{
 
     //gir ny bruker en id basert på hvor mange brukere ekisterer
