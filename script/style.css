@@ -189,3 +189,7 @@ button:hover {
 .dark-mode .plus-icon {
   color: #D4AF37; 
 }
+
+.hidden {
+  display: none;
+}
