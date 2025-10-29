@@ -73,6 +73,14 @@ function updateViewHome(){
 
 }
 
+function createSearchbar(){
+  let html = /*HTML*/`
+  <div> 
+  <input type = "text" value ="${model.viewState.home.searchbar}"
+  oninput="model.viewState.home.searchbar = this.value ;filterBySearchbar()">
+  </div>`
+}
+
 
 //sortering for Nyest / eldst
 function sortDates(){
