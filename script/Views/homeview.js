@@ -2,7 +2,7 @@ function getBooks() {
   let books = model.data.books;
   let html = `<div class="book-list">`;
 
-  // Legg til bok boks først
+  // Legg til bok først
   html += `
       <div class="book-card add-card" onclick="goToPage('registerBook')">
           <div class="plus-icon">&#43;</div>
