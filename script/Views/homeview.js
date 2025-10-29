@@ -1,29 +1,31 @@
 function getBooks() {
   let books = model.data.books;
-  let html = `<div class="book-list">`; // wrapper for flex layout
+  let html = `<div class="book-list">`;
 
-  for (let i = 0; i < books.length; i++) {
-    const book = books[i];
-    html += `
-      <div class="book-card" onclick="updateOverView(${i})" data-status="${book.readingStatusId}">
-        <img src="${book.img}" alt="${book.title}">
-        <div class="book-card-title">${book.title}</div>
-        ${getStars(book.rating)} 
-      </div>
-    `;
-  }
-
-  // Visuell "legg til bok"-knapp
+  // 🔥 Legg til bok først
   html += `
-    <div class="book-card" onclick="goToPage('registerBook')">
-      <div class="plus-icon">+</div>
-      <div class="book-card-title">Legg til bok</div>
-    </div>
+      <div class="book-card add-card" onclick="goToPage('registerBook')">
+          <div class="plus-icon">&#43;</div>
+          <div class="book-card-title">Legg til bok</div>
+      </div>
   `;
+
+  // Deretter eksisterende bøker
+  for (let i = 0; i < books.length; i++) {
+      const book = books[i];
+      html += `
+          <div class="book-card" onclick="updateOverView(${i})">
+              <img src="${book.img}" alt="${book.title}">
+              <div class="book-card-title">${book.title}</div>
+              ${getStars(book.rating)}
+          </div>
+      `;
+  }
 
   html += `</div>`;
   return html;
 }
+
 
 
 
