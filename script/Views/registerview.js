@@ -38,6 +38,14 @@ function updateRegisterBook() {
     <label>Rating</label>
     ${getStars(book.rating)}
 
+    <label>Lesestatus</label>
+<select onchange="model.viewState.registerBook.readingStatus = Number(this.value)">
+  ${model.data.readingstatus.map(status => `
+    <option value="${status.id}" ${status.id == model.viewState.registerBook.readingStatus ? "selected" : ""}>
+      ${status.status}
+    </option>`).join("")}
+</select>
+
     <button onclick="saveNewBook()">Lagre bok</button>
     <button onclick="goToPage('home')" class="secondary">Avbryt</button>
 

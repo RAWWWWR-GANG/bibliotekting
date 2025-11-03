@@ -57,6 +57,14 @@ function editField(book) {
             ${getStars(model.viewState.overView.rating)}
         </div>
 
+        <label>Lesestatus</label>
+<select onchange="model.viewState.overView.readingStatus = Number(this.value)">
+  ${model.data.readingstatus.map(status => `
+    <option value="${status.id}" ${status.id == model.viewState.overView.readingStatus ? "selected" : ""}>
+      ${status.status}
+    </option>`).join("")}
+</select>
+
         <label>Detaljer</label>
         <textarea oninput="model.viewState.overView.details = this.value">${model.viewState.overView.details}</textarea>
 
@@ -79,23 +87,27 @@ function editField(book) {
         OW.details = book.details;
 
         return /*html*/ `
-        <div class="book-card" style="margin:auto;">
-            <img src="${book.img}" alt="${book.title}">
-            <div class="book-card-title">${book.title}</div>
-            ${getStars(book.rating)}
+        <div class="book-overview">
+  <div class="book-overview-left">
+    <img src="${book.img}" alt="${book.title}">
+  </div>
 
-            <p><strong>Forlag:</strong> ${book.publisher}</p>
-            <p><strong>Språk:</strong> ${book.language}</p>
-            <p><strong>Sider:</strong> ${book.pages}</p>
-            <p><strong>ISBN:</strong> ${book.isbn}</p>
-            <p><strong>Utgivelsesår:</strong> ${book.publisherYear}</p>
-            <p><strong>Beskrivelse:</strong> ${book.details}</p>
-        </div>
+  <div class="book-overview-right">
+    <h2>${book.title}</h2>
+    <p><strong>Forlag:</strong> ${book.publisher}</p>
+    <p><strong>Språk:</strong> ${book.language}</p>
+    <p><strong>Sider:</strong> ${book.pages}</p>
+    <p><strong>ISBN:</strong> ${book.isbn}</p>
+    <p><strong>Utgivelsesår:</strong> ${book.publisherYear}</p>
+    <p><strong>Vurdering:</strong> ${getStars(book.rating)}</p>
+    <p><strong>Beskrivelse:</strong> ${book.details}</p>
 
-        <div class="buttons">
-            <button onclick="model.viewState.overView.editBook = true; updateOverView(${model.viewState.overView.currentBookIDX})">Rediger</button>
-            <button onclick="goToPage('home')">Tilbake</button>
-        </div>
-        `;
+    <div class="buttons">
+      <button onclick="model.viewState.overView.editBook = true; updateOverView(${model.viewState.overView.currentBookIDX})">Rediger</button>
+      <button onclick="goToPage('home')">Tilbake</button>
+    </div>
+  </div>
+</div>
+`;
     }
 }
