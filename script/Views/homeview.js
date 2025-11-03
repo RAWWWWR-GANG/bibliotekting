@@ -67,7 +67,7 @@ function updateViewHome() {
   document.getElementById("app").innerHTML = `
     <div class="top-bar">
       <button onclick="toggleDarkMode()">
-        ${model.app.darkMode ? " Lys Modus" : " Mørk Modus"}
+        ${model.app.darkMode ? " Library Mode" : " Book Mode"}
       </button>
       <button onclick="goToPage('login')">Logg inn</button>
       ${dateFilter}
