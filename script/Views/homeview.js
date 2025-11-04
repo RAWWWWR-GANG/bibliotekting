@@ -14,11 +14,12 @@ function getBooks() {
   for (let i = 0; i < books.length; i++) {
     const book = books[i];
     const statusText =
-      model.data.readingstatus.find(s => s.id == book.readingStatusId)?.status ||
+      model.data.readingstatus.find(s => s.id == book.readingStatus)?.status ||
       "ukjent";
 
     html += `
-      <div class="book-card" onclick="updateOverView(${i})">
+      <div class="book-card" data-status="${book.readingStatus}" onclick="updateOverView(${i})">
+      
         <div class="status-badge ${statusText}">${statusText}</div>
         <img src="${book.img}" alt="${book.title}">
         <div class="book-card-title">${book.title}</div>
