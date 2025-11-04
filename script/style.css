@@ -415,3 +415,7 @@ margin: 2px 0;
   gap: 4px;
   margin-top: 4px;
 }
+
+.hidden{
+  display: none;
+}

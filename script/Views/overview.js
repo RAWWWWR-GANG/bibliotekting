@@ -90,6 +90,7 @@ function editField(book) {
         OW.rating = book.rating;
         OW.img = book.img;
         OW.details = book.details;
+        console.log('PDF?', book.contentType, book.contentURL);
 
         return /*html*/ `
         <div class="book-overview">
@@ -106,6 +107,10 @@ function editField(book) {
     <p><strong>Utgivelsesår:</strong> ${book.publisherYear}</p>
     <p><strong>Vurdering:</strong> ${getStars(book.rating)}</p>
     <p><strong>Beskrivelse:</strong> ${book.details}</p>
+    ${book.contentType === 'pdf' && book.contentURL
+  ? '<div><a class="read-link" href="' + book.contentURL + '" target="_blank" rel="noopener">Les boken (PDF)</a></div>'
+  : ''
+}
 
     <div class="buttons">
       <button onclick="model.viewState.overView.editBook = true; updateOverView(${model.viewState.overView.currentBookIDX})">Rediger</button>
