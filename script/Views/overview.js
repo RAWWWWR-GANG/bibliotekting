@@ -52,18 +52,23 @@ function editField(book) {
         <input type="number" value="${model.viewState.overView.publisherYear}"
             oninput="model.viewState.overView.publisherYear = this.value">
 
+        <div class="rating-section">
         <label>Rating</label>
-        <div>
+        <div class="stars-container">
             ${getStars(model.viewState.overView.rating)}
-        </div>
+  </div>
+</div>
 
+        <div class="status-section">
         <label>Lesestatus</label>
-<select onchange="model.viewState.overView.readingStatus = Number(this.value)">
-  ${model.data.readingstatus.map(status => `
-    <option value="${status.id}" ${status.id == model.viewState.overView.readingStatus ? "selected" : ""}>
-      ${status.status}
-    </option>`).join("")}
-</select>
+        <select onchange="model.viewState.overView.readingStatus = Number(this.value)">
+            ${model.data.readingstatus.map(status => `
+        <option value="${status.id}" ${status.id == model.viewState.overView.readingStatus ? "selected" : ""}>
+        ${status.status}
+      </option>`).join("")}
+  </select>
+</div>
+
 
         <label>Detaljer</label>
         <textarea oninput="model.viewState.overView.details = this.value">${model.viewState.overView.details}</textarea>
