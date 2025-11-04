@@ -71,14 +71,23 @@ const model = {
         users:[
             {
                 id: "user0",
+                username: "Admin",
+                password: "123",
+                role: "admin"
+            },
+
+            {
+                id: "user1",
                 username: "Geir12",
-                password: "123"
+                password: "123",
+                role: "gjest" //gjest venn admin
             },
             
             {
-                id: "user1",
+                id: "user2",
                 username: "Emil12",
                 password: "123",
+                role: "gjest"
             }
         ],
 

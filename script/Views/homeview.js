@@ -64,7 +64,10 @@ function updateViewHome(){
     <button onclick="toggleDarkMode()">
     ${model.app.darkMode ? "Lys modus" : "Lese modus"}
     </button>
-    <button onclick="goToPage('login')"> Logg in </button>
+    ${model.app.adminIsLoggedIn
+      ? `<button onclick="goToPage('admin')"> Admin panel </button>`
+      : `<button onclick="goToPage('login')"> Logg in </button>`
+    }
     ${dateFilter}
     ${readingFilter}
     ${createSearchbar()}
