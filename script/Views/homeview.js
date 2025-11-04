@@ -14,14 +14,15 @@ function getBooks() {
   for (let i = 0; i < books.length; i++) {
     const book = books[i];
     const statusText =
-      model.data.readingstatus.find(s => s.id == book.readingStatusId)?.status ||
+      model.data.readingstatus.find(s => s.id == book.readingStatus)?.status ||
       "ukjent";
 
     html += `
-      <div class="book-card" onclick="updateOverView(${i})">
+      <div class="book-card data-status="${book.statusText}" onclick="updateOverView(${i})">
         <div class="status-badge ${statusText}">${statusText}</div>
         <img src="${book.img}" alt="${book.title}">
         <div class="book-card-title">${book.title}</div>
+        <div class="book-card-title">${book.publisher}</div>
         ${getStars(book.rating)}
       </div>
     `;
@@ -61,7 +62,7 @@ function updateViewHome() {
 
   const searchBar = `
     <input type="text" id="searchBar" placeholder="Søk etter bok..." 
-      oninput="model.viewState.home.searchbar = this.value; filterBooks()">
+      oninput="model.viewState.home.searchbar = this.value; filterBySearchbar()">
   `;
 
   document.getElementById("app").innerHTML = `
@@ -84,14 +85,7 @@ function updateViewHome() {
   sortDates();
 }
 
-function createSearchbar(){
-  let html = /*HTML*/`
-  <div> 
-  <input type = "text" value ="${model.viewState.home.searchbar}"
-  oninput="model.viewState.home.searchbar = this.value ;filterBySearchbar()">
-  </div>`
-  return html;
-}
+
 
 function filterBySearchbar() {
   const searchValue = (model.viewState.home.searchbar || "").toLowerCase().trim();
@@ -184,11 +178,12 @@ function filterByReadingStatus(){
       div.classList.remove('hidden');
       return;
     }
+    
 
-    const bookStatus = div.dataset.status; 
+    const bookStatus = div.dataset.status;
     const shouldHide = bookStatus !== wanted;
 
-    div.classList.toggle('hidden', shouldHide);
+    div.classList.toggle('hidden', shouldHide,);
   });
 }
 
