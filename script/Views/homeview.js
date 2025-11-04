@@ -13,15 +13,12 @@ function getBooks() {
   // Deretter eksisterende bøker
   for (let i = 0; i < books.length; i++) {
     const book = books[i];
-    const statusText =
-      model.data.readingstatus.find(s => s.id == book.readingStatus)?.status ||
-      model.data.readingstatus.find(s => s.id == book.readingStatus)?.status ||
-      "ukjent";
+    
 
     html += `
       <div class="book-card" data-status="${book.readingStatus}" onclick="updateOverView(${i})">
       
-        <div class="status-badge ${statusText}">${statusText}</div>
+        <div class="status-badge ${book.readingStatus}">${book.readingStatus}</div>
         <img src="${book.img}" alt="${book.title}">
         <div class="book-card-title">${book.title}</div>
         <div class="book-card-title">${book.publisher}</div>
