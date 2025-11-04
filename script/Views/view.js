@@ -13,6 +13,9 @@ function updateView(){
     else if (page === "login"){
         updateLoginView();
         }
+    else if (page === "admin"){
+        updateAdminView();
+        }
 }
 
 

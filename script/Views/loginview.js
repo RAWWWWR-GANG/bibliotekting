@@ -23,19 +23,17 @@ function updateLoginView(){
 }
 
 function loggIn(){
-    const adminUserName = model.data.admin.username;
-    const adminPassWord = model.data.admin.password;
     const users = model.data.users;
 
     // find returnere første brukeren som matcher passord og brukernavn
     const foundUser = users.find(
         user => user.username === tempUserName && user.password === tempPassWord
     );
-    if(tempUserName === adminUserName && tempPassWord == adminPassWord){
+    if(foundUser && foundUser.role === "admin"){
         model.app.adminIsLoggedIn = true
         alert("Velkommen admin")
         goToPage('home')
-    }else if(foundUser){
+    }else if(foundUser && foundUser.role === "gjest"){
         model.app.isLoggedIn = true
         goToPage('home')
         alert("Velkommen bruker")
@@ -70,7 +68,7 @@ function registerUser(){
     let userId= "user"+i
 
     //adder ny bruker til model
-    model.data.users.push({id: userId,username: tempUserName,password: tempPassWord})
+    model.data.users.push({id: userId,username: tempUserName,password: tempPassWord, role: "gjest"})
     alert("bruker lagd")
     updateLoginView()
     console.log(model.data.users)}

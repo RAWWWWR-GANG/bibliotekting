@@ -15,6 +15,7 @@ function getBooks() {
     const book = books[i];
     const statusText =
       model.data.readingstatus.find(s => s.id == book.readingStatus)?.status ||
+      model.data.readingstatus.find(s => s.id == book.readingStatus)?.status ||
       "ukjent";
 
     html += `
@@ -23,6 +24,7 @@ function getBooks() {
         <div class="status-badge ${statusText}">${statusText}</div>
         <img src="${book.img}" alt="${book.title}">
         <div class="book-card-title">${book.title}</div>
+        <div class="book-card-title">${book.publisher}</div>
         ${getStars(book.rating)}
       </div>
     `;
@@ -62,7 +64,7 @@ function updateViewHome() {
 
   const searchBar = `
     <input type="text" id="searchBar" placeholder="Søk etter bok..." 
-      oninput="model.viewState.home.searchbar = this.value; filterBooks()">
+      oninput="model.viewState.home.searchbar = this.value; filterBySearchbar()">
   `;
 
   document.getElementById("app").innerHTML = `
@@ -70,7 +72,10 @@ function updateViewHome() {
       <button onclick="toggleDarkMode()">
         ${model.app.darkMode ? " Library Mode" : " Book Mode"}
       </button>
-      <button onclick="goToPage('login')">Logg inn</button>
+      ${model.app.adminIsLoggedIn
+      ? `<button onclick="goToPage('admin')"> Admin panel </button>`
+      : `<button onclick="goToPage('login')">Logg inn</button>`
+    }
       ${dateFilter}
       ${readingFilter}
       ${searchBar}
@@ -82,14 +87,7 @@ function updateViewHome() {
   sortDates();
 }
 
-function createSearchbar(){
-  let html = /*HTML*/`
-  <div> 
-  <input type = "text" value ="${model.viewState.home.searchbar}"
-  oninput="model.viewState.home.searchbar = this.value ;filterBySearchbar()">
-  </div>`
-  return html;
-}
+
 
 function filterBySearchbar() {
   const searchValue = (model.viewState.home.searchbar || "").toLowerCase().trim();
@@ -182,11 +180,12 @@ function filterByReadingStatus(){
       div.classList.remove('hidden');
       return;
     }
+    
 
-    const bookStatus = div.dataset.status; 
+    const bookStatus = div.dataset.status;
     const shouldHide = bookStatus !== wanted;
 
-    div.classList.toggle('hidden', shouldHide);
+    div.classList.toggle('hidden', shouldHide,);
   });
 }
 
