@@ -94,7 +94,9 @@ const model = {
             img: "pictures/Arts_50-Shades-of-grey1.png", 
             rating: 5, 
             details: "Fifty Shades er en erotisk bokserie av E.L. James",
-            readingStatus: "unread"
+            readingStatus: "unread",
+            contentType: "pdf",
+            contentURL: "files/harry-potter-sample.pdf"
             },
             
             {
@@ -108,7 +110,9 @@ const model = {
             img: "pictures/HP.jpg", 
             rating: 2, 
             details: "Harry Potter og Halvblodsprinsen er den sjette romanen i J.K. Rowlings populære Harry Potter-serie",
-            readingStatus: "read"
+            readingStatus: "read",
+            contentType: "pdf",
+            contentURL: "files/fifty-shades-sample.pdf"
             }
         ]
     }
