@@ -9,6 +9,7 @@ function saveEditedBook(bookIDX) {
     book.rating = model.viewState.overView.rating
     book.img= model.viewState.overView.img
     book.details = model.viewState.overView.details
+    book.readingStatus = model.viewState.overView.readingStatus;
 
     model.viewState.overView.editBook = false;
     updateOverView(bookIDX);

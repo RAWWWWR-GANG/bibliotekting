@@ -13,7 +13,7 @@ function updateLoginView(){
     
     <div>
     <button onclick="goToPage('home')">Tilbake</button>
-    <button onclick="loggIn()">Logg in</button>
+    <button onclick="loggIn()">Logg inn</button>
     <button onclick="registerUser()">Registrer bruker</button>
     </div>
     `

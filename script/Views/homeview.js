@@ -1,5 +1,5 @@
 function getBooks() {
-  let books = model.data.books;
+  const books = model.data.books;
   let html = `<div class="book-list">`;
 
   // Legg til bok først
@@ -12,17 +12,19 @@ function getBooks() {
 
   // Deretter eksisterende bøker
   for (let i = 0; i < books.length; i++) {
-      const book = books[i];
-      html += `
-          <div class="book-card ${book.title} ${book.publisher}"
-          data-status="${book.readingStatus}"
-          onclick="updateOverView(${i})">
-              <img src="${book.img}" alt="${book.title}">
-              <div class="book-card-title">${book.title}</div>
-              <div class="book-card-auther">${book.publisher}</div>
-              ${getStars(book.rating)}
-          </div>
-      `;
+    const book = books[i];
+    const statusText =
+      model.data.readingstatus.find(s => s.id == book.readingStatusId)?.status ||
+      "ukjent";
+
+    html += `
+      <div class="book-card" onclick="updateOverView(${i})">
+        <div class="status-badge ${statusText}">${statusText}</div>
+        <img src="${book.img}" alt="${book.title}">
+        <div class="book-card-title">${book.title}</div>
+        ${getStars(book.rating)}
+      </div>
+    `;
   }
 
   html += `</div>`;
@@ -33,10 +35,12 @@ function getBooks() {
 
 
 
-function updateViewHome(){
-  // dropdown for Nyest / Eldst
-  const dates = model.viewState.home.filterByRelease
+function updateViewHome() {
+  const dates = model.viewState.home.filterByRelease;
   const dateList = model.data.dateState;
+  const rStatus = model.viewState.home.filterReadingStatus;
+  const rStatusL = model.data.readingstatus;
+
   const dateFilter = `
     <select onchange="model.viewState.home.filterByRelease = Number(this.value); sortDates();">
       ${dateList.map(s => `
@@ -45,13 +49,9 @@ function updateViewHome(){
         </option>`).join('')}
     </select>
   `;
-  // dropdown for lesestatus filter
-  const rStatus = model.viewState.home.filterReadingStatus
-  const rStatusL = model.data.readingstatus
+
   const readingFilter = `
-    <select onchange="model.viewState.home.filterReadingStatus = Number(this.value); 
-    filterByReadingStatus();
-    filterBySearchbar()">
+    <select onchange="model.viewState.home.filterReadingStatus = Number(this.value); filterByReadingStatus();">
       ${rStatusL.map(s => `
         <option value="${s.id}" ${s.id == rStatus ? 'selected' : ''}>
           ${s.status}
@@ -59,26 +59,29 @@ function updateViewHome(){
     </select>
   `;
 
+  const searchBar = `
+    <input type="text" id="searchBar" placeholder="Søk etter bok..." 
+      oninput="model.viewState.home.searchbar = this.value; filterBooks()">
+  `;
 
-    document.getElementById('app').innerHTML = /*HTML*/ `
-    <button onclick="toggleDarkMode()">
-    ${model.app.darkMode ? "Lys modus" : "Lese modus"}
-    </button>
-    ${model.app.adminIsLoggedIn
+  document.getElementById("app").innerHTML = `
+    <div class="top-bar">
+      <button onclick="toggleDarkMode()">
+        ${model.app.darkMode ? " Library Mode" : " Book Mode"}
+      </button>
+      ${model.app.adminIsLoggedIn
       ? `<button onclick="goToPage('admin')"> Admin panel </button>`
-      : `<button onclick="goToPage('login')"> Logg in </button>`
+      : `<button onclick="goToPage('login')">Logg inn</button>`
     }
-    ${dateFilter}
-    ${readingFilter}
-    ${createSearchbar()}
-    <div id="Books">
-    ${getBooks()}
-    
+      ${dateFilter}
+      ${readingFilter}
+      ${searchBar}
     </div>
-    `;
-    sortDates();
-    
 
+    <div id="Books">${getBooks()}</div>
+  `;
+
+  sortDates();
 }
 
 function createSearchbar(){
