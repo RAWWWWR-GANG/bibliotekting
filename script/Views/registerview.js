@@ -35,8 +35,22 @@ function updateRegisterBook() {
     <input type="text" value="${book.img}" placeholder="https://..."
       oninput="model.viewState.registerBook.img = this.value; updateView()">
 
-    <label>Rating</label>
+    <div class="rating-section">
+  <label>Rating</label>
+  <div class="stars-container">
     ${getStars(book.rating)}
+  </div>
+</div>
+
+<div class="status-section">
+  <label>Lesestatus</label>
+  <select onchange="model.viewState.registerBook.readingStatus = Number(this.value)">
+    ${model.data.readingstatus.map(status => `
+      <option value="${status.id}" ${status.id == model.viewState.registerBook.readingStatus ? "selected" : ""}>
+        ${status.status}
+      </option>`).join("")}
+  </select>
+</div>
 
     <button onclick="saveNewBook()">Lagre bok</button>
     <button onclick="goToPage('home')" class="secondary">Avbryt</button>
