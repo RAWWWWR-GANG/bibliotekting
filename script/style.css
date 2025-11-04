@@ -155,7 +155,7 @@ border-bottom: 1px solid #d9c6a3;
 font-weight: bold; 
 padding: 10px; 
 font-size: 16px;
-color: #3b240b; 
+color: #f8e8c8; 
 } 
 
 /* RATING STARS */ 
@@ -401,4 +401,17 @@ margin: 2px 0;
     width: 100%;
     max-width: 300px;
   }
+}
+/* SPACING FOR RATING OG READINGSTATUS*/
+.rating-section,
+.status-section {
+  margin-top: 12px;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.stars-container {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
 }

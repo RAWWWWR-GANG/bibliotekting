@@ -93,7 +93,7 @@ const model = {
             publisherYear:"2011", 
             img: "pictures/Arts_50-Shades-of-grey1.png", 
             rating: 5, 
-            details: "Fifty Shades er en erotisk bokserie av E.L. James",
+            details: "Fifty Shades of Grey er en erotisk romat som utforsker det intense og kompliserte forholdet mellom den naive litteraturstudenten Anastasia Seele og den karismatiske milliarderen Christian Grey. Boken starter når Ana intervjuer Christian og de umiddelbart føler en sterk, gjensidig tiltrekning. Det som følger er en reise inn i Christians verden av mørke seksuelle hemmeligheter. Han introduserer Ana for BDSM og ønsker en relasjon basert på en streng dominant/underdanig-kontrakt. Romamen balanser mellom Anas spirerende følelser for Christian og hennes indre kamp med hans behov for absoull kontroll. Hovedtemaet er makt, begjær og utforskning av seksuelle grenser.",
             readingStatus: "unread"
             },
             
