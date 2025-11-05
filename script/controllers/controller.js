@@ -58,6 +58,7 @@ function cancelRegisterBook(){
 function toggleDarkMode() {
   model.app.darkMode = !model.app.darkMode;
   applyTheme();
+  updateViewHome();
 }
 
 function applyTheme() {
