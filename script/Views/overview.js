@@ -20,6 +20,14 @@ function updateOverView(bookIdx){
 function editField(book) {
     if (model.viewState.overView.editBook) {
         // EDIT MODE
+
+        const optionsHtml = (model.data.readingstatus ?? [])
+        .map(s => `
+            <option value="${s.id}" ${s.id === model.viewState.overView.readingStatus ? 'selected' : ''}>
+                ${s.status}
+            </option>
+        `).join('');
+
         return /*html*/ `
         <h2>Rediger bok</h2>
         <div class="book-card" style="margin:auto;">
@@ -32,7 +40,7 @@ function editField(book) {
         <input type="text" value="${model.viewState.overView.title}" 
             oninput="model.viewState.overView.title = this.value">
 
-        <label>Forlag</label>
+        <label>Forfatter</label>
         <input type="text" value="${model.viewState.overView.publisher}"
             oninput="model.viewState.overView.publisher = this.value">
 
@@ -62,12 +70,9 @@ function editField(book) {
         <div class="status-section">
         <label>Lesestatus</label>
         <select onchange="model.viewState.overView.readingStatus = Number(this.value)">
-            ${model.data.readingstatus.map(status => `
-        <option value="${status.id}" ${status.id == model.viewState.overView.readingStatus ? "selected" : ""}>
-        ${status.status}
-      </option>`).join("")}
-  </select>
-</div>
+          ${optionsHtml}
+        </select>
+      </div>
 
 
         <label>Detaljer</label>
@@ -90,7 +95,9 @@ function editField(book) {
         OW.rating = book.rating;
         OW.img = book.img;
         OW.details = book.details;
-        console.log('PDF?', book.contentType, book.contentURL);
+        OW.readingStatus = (model.data.readingstatus ?? [])
+            .find(s => s.status.toLowerCase() === (book.readingStatus || '').toLowerCase())
+            ?.id ?? 0;
 
         return /*html*/ `
         <div class="book-overview">
@@ -100,11 +107,12 @@ function editField(book) {
 
   <div class="book-overview-right">
     <h2>${book.title}</h2>
-    <p><strong>Forlag:</strong> ${book.publisher}</p>
+    <p><strong>Forfatter:</strong> ${book.publisher}</p>
     <p><strong>Språk:</strong> ${book.language}</p>
     <p><strong>Sider:</strong> ${book.pages}</p>
     <p><strong>ISBN:</strong> ${book.isbn}</p>
     <p><strong>Utgivelsesår:</strong> ${book.publisherYear}</p>
+    <p><strong>Lesestatus:</strong> ${book.readingStatus}</p>
     <p><strong>Vurdering:</strong> ${getStars(book.rating)}</p>
     <p><strong>Beskrivelse:</strong> ${book.details}</p>
     ${book.contentType === 'pdf' && book.contentURL

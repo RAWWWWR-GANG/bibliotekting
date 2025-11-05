@@ -6,9 +6,9 @@ function updateRegisterBook() {
 
     <label>Tittel</label>
     <input type="text" value="${book.title}" 
-      oninput="model.viewState.registerBook.title = this.value; updateView()">
+      oninput="model.viewState.registerBook.title = this.value;">
 
-    <label>Forlag</label>
+    <label>Forfatter</label>
     <input type="text" value="${book.publisher}" 
       oninput="model.viewState.registerBook.publisher = this.value;">
 
@@ -61,7 +61,7 @@ function updateRegisterBook() {
         <img src="${book.img || 'pictures/placeholder.jpg'}" alt="Forhåndsvisning">
         <div class="book-card-title">${book.title || 'Uten tittel'}</div>
         ${getStars(book.rating)}
-        <p><strong>Forlag:</strong> ${book.publisher || '---'}</p>
+        <p><strong>Forfatter:</strong> ${book.publisher || '---'}</p>
         <p><strong>Språk:</strong> ${book.language || '---'}</p>
         <p><strong>Sider:</strong> ${book.pages || '---'}</p>
         <p><strong>Utgivelsesår:</strong> ${book.publisherYear || '---'}</p>
