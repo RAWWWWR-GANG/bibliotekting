@@ -34,7 +34,7 @@ function loggIn(){
         model.app.currentUserId = foundUser.id
         alert("Velkommen admin")
         goToPage('home')
-    }else if(foundUser && foundUser.role === "gjest"){
+    }else if(foundUser && foundUser.role === "gjest" || "venn"){
         model.app.isLoggedIn = true
         model.app.currentUserId = foundUser.id
         goToPage('home')
@@ -72,6 +72,6 @@ function registerUser(){
     //adder ny bruker til model
     model.data.users.push({id: userId,username: tempUserName,password: tempPassWord, role: "gjest"})
     alert("bruker lagd")
-    updateLoginView()
+    loggIn()
     console.log(model.data.users)}
 }

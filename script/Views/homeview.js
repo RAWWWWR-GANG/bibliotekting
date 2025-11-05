@@ -1,14 +1,17 @@
 function getBooks() {
   const books = model.data.books;
+  const currentUser = model.data.users.find(u => u.id == model.app.currentUserId);
   let html = `<div class="book-list">`;
-
-  // Legg til bok først
-  html += `
-      <div class="book-card add-card" onclick="goToPage('registerBook')">
+  // Legg til bok funksjon, kan bare se som admin
+  html +=`
+  ${currentUser.role == "admin"
+   ? 
+      `<div class="book-card add-card" onclick="goToPage('registerBook')">
           <div class="plus-icon">&#43;</div>
           <div class="book-card-title">Legg til bok</div>
-      </div>
-  `;
+      </div>`
+   : ""
+  }`
 
   // Deretter eksisterende bøker
   for (let i = 0; i < books.length; i++) {
@@ -78,7 +81,6 @@ function updateViewHome() {
       ${dateFilter}
       ${readingFilter}
       ${searchBar}
-      <button onclick="testRoles()"></button>
     </div>
 
     <div id="Books">${getBooks()}</div>

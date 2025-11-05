@@ -48,11 +48,10 @@ function logOut(){
     goToPage('home')
 }
 
-// kan bli gjort om til en roll sjekk på ting
-function testRoles(){
+// oppskrift på rolle testing
+/* function testRoles(){
     const currentUser = model.data.users.find(u => u.id == model.app.currentUserId);
-    console.log(currentUser)
     if(currentUser.role == "gjest"){
         alert('pogdog')
     }
-}
+} */
