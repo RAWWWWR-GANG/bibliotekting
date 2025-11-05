@@ -9,11 +9,17 @@ function saveEditedBook(bookIDX) {
     book.rating = model.viewState.overView.rating
     book.img= model.viewState.overView.img
     book.details = model.viewState.overView.details
-    book.readingStatus = model.viewState.overView.readingStatus;
+    model.data.readingstatus.forEach(s => {
+        if (s.id === model.viewState.overView.readingStatus){
+            book.readingStatus = s.status.toLowerCase();
+        }
+    });
+    
 
     model.viewState.overView.editBook = false;
-    updateOverView(bookIDX);
     emptyOverView();
+    updateOverView(bookIDX);
+    
 }
 
 function cancelEdit(){

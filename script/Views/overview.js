@@ -95,7 +95,9 @@ function editField(book) {
         OW.rating = book.rating;
         OW.img = book.img;
         OW.details = book.details;
-        console.log('PDF?', book.contentType, book.contentURL);
+        OW.readingStatus = (model.data.readingstatus ?? [])
+            .find(s => s.status.toLowerCase() === (book.readingStatus || '').toLowerCase())
+            ?.id ?? 0;
 
         return /*html*/ `
         <div class="book-overview">

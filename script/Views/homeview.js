@@ -169,6 +169,7 @@ function filterByReadingStatus(){
     bookDivs.forEach(div => {
       div.classList.remove('hidden');
     });
+    filterBySearchbar();
     return;
   }
 
@@ -184,6 +185,7 @@ function filterByReadingStatus(){
 
     div.classList.toggle('hidden', shouldHide,);
   });
+  filterBySearchbar();
 }
 
 
