@@ -20,6 +20,14 @@ function updateOverView(bookIdx){
 function editField(book) {
     if (model.viewState.overView.editBook) {
         // EDIT MODE
+
+        const optionsHtml = (model.data.readingstatus ?? [])
+        .map(s => `
+            <option value="${s.id}" ${s.id === model.viewState.overView.readingStatus ? 'selected' : ''}>
+                ${s.status}
+            </option>
+        `).join('');
+
         return /*html*/ `
         <h2>Rediger bok</h2>
         <div class="book-card" style="margin:auto;">
@@ -62,12 +70,9 @@ function editField(book) {
         <div class="status-section">
         <label>Lesestatus</label>
         <select onchange="model.viewState.overView.readingStatus = Number(this.value)">
-            ${model.data.readingstatus.map(status => `
-        <option value="${status.id}" ${status.id == model.viewState.overView.readingStatus ? "selected" : ""}>
-        ${status.status}
-      </option>`).join("")}
-  </select>
-</div>
+          ${optionsHtml}
+        </select>
+      </div>
 
 
         <label>Detaljer</label>
