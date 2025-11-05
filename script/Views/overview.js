@@ -32,7 +32,7 @@ function editField(book) {
         <input type="text" value="${model.viewState.overView.title}" 
             oninput="model.viewState.overView.title = this.value">
 
-        <label>Forlag</label>
+        <label>Forfatter</label>
         <input type="text" value="${model.viewState.overView.publisher}"
             oninput="model.viewState.overView.publisher = this.value">
 
@@ -100,7 +100,7 @@ function editField(book) {
 
   <div class="book-overview-right">
     <h2>${book.title}</h2>
-    <p><strong>Forlag:</strong> ${book.publisher}</p>
+    <p><strong>Forfatter:</strong> ${book.publisher}</p>
     <p><strong>Språk:</strong> ${book.language}</p>
     <p><strong>Sider:</strong> ${book.pages}</p>
     <p><strong>ISBN:</strong> ${book.isbn}</p>
