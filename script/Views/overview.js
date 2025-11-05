@@ -112,6 +112,7 @@ function editField(book) {
     <p><strong>Sider:</strong> ${book.pages}</p>
     <p><strong>ISBN:</strong> ${book.isbn}</p>
     <p><strong>Utgivelsesår:</strong> ${book.publisherYear}</p>
+    <p><strong>Lesestatus:</strong> ${book.readingStatus}</p>
     <p><strong>Vurdering:</strong> ${getStars(book.rating)}</p>
     <p><strong>Beskrivelse:</strong> ${book.details}</p>
     ${book.contentType === 'pdf' && book.contentURL
