@@ -70,7 +70,7 @@ function updateViewHome() {
   document.getElementById("app").innerHTML = `
     <div class="top-bar">
       <button onclick="toggleDarkMode()">
-        ${model.app.darkMode ? " Library Mode" : " Book Mode"}
+        ${model.app.darkMode ? " Book Mode " : " Library Mode"}
       </button>
       ${model.app.adminIsLoggedIn
        ?`<button onclick="goToPage('admin')"> Admin panel </button>`

@@ -81,6 +81,7 @@ function editField(book) {
         <div class="buttons">
             <button onclick="saveEditedBook(model.viewState.overView.currentBookIDX)">Lagre</button>
             <button onclick="cancelEdit()">Avbryt</button>
+            <button onclick="deleteBook()">Fjern bok</button>
         </div>
         `;
     } else {
