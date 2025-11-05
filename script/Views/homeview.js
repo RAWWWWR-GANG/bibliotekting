@@ -70,12 +70,15 @@ function updateViewHome() {
         ${model.app.darkMode ? " Library Mode" : " Book Mode"}
       </button>
       ${model.app.adminIsLoggedIn
-      ? `<button onclick="goToPage('admin')"> Admin panel </button>`
-      : `<button onclick="goToPage('login')">Logg inn</button>`
-    }
+       ?`<button onclick="goToPage('admin')"> Admin panel </button>`
+       : model.app.isLoggedIn
+        ?`<button onclick="logOut()">Logg ut</button>`
+        :`<button onclick="goToPage('login')">Logg inn</button>`
+      }
       ${dateFilter}
       ${readingFilter}
       ${searchBar}
+      <button onclick="testRoles()"></button>
     </div>
 
     <div id="Books">${getBooks()}</div>

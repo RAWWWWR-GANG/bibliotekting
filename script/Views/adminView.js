@@ -4,6 +4,7 @@ function updateAdminView(){
     ${userGenerator()}
     </div>
     <button onclick="goToPage('home')">Tilbake</button>
+    <button onclick="logOut()">logg ut</button>
     `
 }
 //^^^^ trenger å adde css^^^^^^
@@ -31,10 +32,27 @@ function userGenerator(){
 //updaterer rollene etter admin's ønsker
 function updateRole(index,modifier){
     const user = model.data.users[index];
+    // gjør om roller til tall
     const roles = ["gjest","venn","admin"];
     const currentIndex = roles.indexOf(user.role);
+    // finner rollen til brukern ^^^^ nextindex går til neste rolle. (modifer er enten +1 eller -1)
     const nextIndex = (currentIndex + modifier + roles.length) % roles.length;
     user.role = roles[nextIndex];
     updateAdminView()
     console.log(`${user.username} er nå ${user.role}`, index, currentIndex);
+}
+
+function logOut(){
+    model.app.adminIsLoggedIn = false
+    model.app.isLoggedIn = false
+    goToPage('home')
+}
+
+// kan bli gjort om til en roll sjekk på ting
+function testRoles(){
+    const currentUser = model.data.users.find(u => u.id == model.app.currentUserId);
+    console.log(currentUser)
+    if(currentUser.role == "gjest"){
+        alert('pogdog')
+    }
 }

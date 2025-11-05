@@ -3,6 +3,7 @@ const model = {
         currentPage: "home", // overView, registerBook, login
         isLoggedIn: false, // true
         adminIsLoggedIn: false, //true
+        currentUserId: "",
         darkMode: true, // false
 
         pages: ["home", "overView", "registerBook", "login"]

@@ -31,10 +31,12 @@ function loggIn(){
     );
     if(foundUser && foundUser.role === "admin"){
         model.app.adminIsLoggedIn = true
+        model.app.currentUserId = foundUser.id
         alert("Velkommen admin")
         goToPage('home')
     }else if(foundUser && foundUser.role === "gjest"){
         model.app.isLoggedIn = true
+        model.app.currentUserId = foundUser.id
         goToPage('home')
         alert("Velkommen bruker")
 
@@ -44,7 +46,7 @@ function loggIn(){
     }else{
         alert("Feil passord")
     }
-    console.log(tempUserName,tempPassWord,model.app.isLoggedIn,foundUser);
+    console.log(tempUserName,tempPassWord,model.app.isLoggedIn,foundUser.role);
 }
 
 function registerUser(){
