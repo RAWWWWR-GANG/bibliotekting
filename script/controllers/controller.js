@@ -4,13 +4,20 @@ function goToPage(page) {
 }
 
 function saveNewBook(){
+
+    
     const newBook = { ...model.viewState.registerBook };
+    model.data.readingstatus.forEach(s => {
+        if(s.id === newBook.readingStatus){
+            newBook.readingStatus = s.status.toLowerCase()
+        }
+    });
 
     //Lager bok ID 
     newBook.id = model.data.books.length > 0
     ? model.data.books[model.data.books.length - 1].id + 1
     : 1;
-
+    console.log(newBook)
     model.data.books.push(newBook);
 
     //Nullstiller  viewState.registerBook etter det er lagra

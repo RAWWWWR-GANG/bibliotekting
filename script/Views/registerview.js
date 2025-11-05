@@ -6,7 +6,7 @@ function updateRegisterBook() {
 
     <label>Tittel</label>
     <input type="text" value="${book.title}" 
-      oninput="model.viewState.registerBook.title = this.value; updateView()">
+      oninput="model.viewState.registerBook.title = this.value;">
 
     <label>Forfatter</label>
     <input type="text" value="${book.publisher}" 
