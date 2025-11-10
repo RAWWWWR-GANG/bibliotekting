@@ -84,6 +84,8 @@ function editField(book) {
         </div>
         `;
     } else {
+        const currentUser = model.data.users.find(u => u.id == model.app.currentUserId);
+
         // VIEW MODE
         const OW = model.viewState.overView;
         OW.title = book.title;
@@ -115,13 +117,19 @@ function editField(book) {
     <p><strong>Lesestatus:</strong> ${book.readingStatus}</p>
     <p><strong>Vurdering:</strong> ${getStars(book.rating)}</p>
     <p><strong>Beskrivelse:</strong> ${book.details}</p>
-    ${book.contentType === 'pdf' && book.contentURL
-  ? '<div><a class="read-link" href="' + book.contentURL + '" target="_blank" rel="noopener">Les boken (PDF)</a></div>'
-  : ''
-}
+    ${currentUser.role == "admin" || currentUser.role == "venn"
+       ?`${book.contentType === 'pdf' && book.contentURL
+         ? '<div><a class="read-link" href="' + book.contentURL + '" target="_blank" rel="noopener">Les boken (PDF)</a></div>'
+         : ''
+        }`
+        : ""
+    }
 
     <div class="buttons">
-      <button onclick="model.viewState.overView.editBook = true; updateOverView(${model.viewState.overView.currentBookIDX})">Rediger</button>
+    ${currentUser.role == "admin"
+      ?`<button onclick="model.viewState.overView.editBook = true; updateOverView(${model.viewState.overView.currentBookIDX})">Rediger</button>`
+      : ""
+      }
       <button onclick="goToPage('home')">Tilbake</button>
     </div>
   </div>

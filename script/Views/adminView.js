@@ -3,8 +3,10 @@ function updateAdminView(){
     <div id="users">
     ${userGenerator()}
     </div>
+    <div>
     <button onclick="goToPage('home')">Tilbake</button>
     <button onclick="logOut()">logg ut</button>
+    </div>
     `
 }
 //^^^^ trenger å adde css^^^^^^
@@ -18,9 +20,13 @@ function userGenerator(){
         console.log(i)
         html += `
         <div> 
-        Bruker: ${user.username}
-        rolle: ${user.role} <button onclick="updateRole(${i},1)">Oppgrader</button>
+        <div>Bruker: ${user.username}</div>
+        rolle: ${user.role} 
+        
+        <button onclick="updateRole(${i},1)">Oppgrader</button> 
         <button onclick="updateRole(${i},-1)">Nedgrader</button>
+    
+
 
         
         </div>`
@@ -45,14 +51,13 @@ function updateRole(index,modifier){
 function logOut(){
     model.app.adminIsLoggedIn = false
     model.app.isLoggedIn = false
-    goToPage('home')
+    goToPage('login')
 }
 
-// kan bli gjort om til en roll sjekk på ting
-function testRoles(){
+// oppskrift på rolle testing
+/* function testRoles(){
     const currentUser = model.data.users.find(u => u.id == model.app.currentUserId);
-    console.log(currentUser)
     if(currentUser.role == "gjest"){
         alert('pogdog')
     }
-}
+} */

@@ -1,6 +1,6 @@
 const model = {
     app:{
-        currentPage: "home", // overView, registerBook, login
+        currentPage: "login", // home, overView, registerBook, login, admin
         isLoggedIn: false, // true
         adminIsLoggedIn: false, //true
         currentUserId: "",
@@ -88,7 +88,7 @@ const model = {
                 id: "user2",
                 username: "Emil12",
                 password: "123",
-                role: "gjest"
+                role: "venn"
             }
         ],
 

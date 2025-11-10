@@ -4,15 +4,15 @@ function updateLoginView(){
 
     document.getElementById('app').innerHTML = /*HTML*/ `
     
+    <h2> Velkommen til Geir's bibilotek</h2>
     <div>
-    Username :
+    Brukernavn :
     <input onchange="tempUserName =(this.value)">
     </div>
-    Password  :
+    Passord  :
     <input onchange="tempPassWord =(this.value)">
     
     <div>
-    <button onclick="goToPage('home')">Tilbake</button>
     <button onclick="loggIn()">Logg inn</button>
     <button onclick="registerUser()">Registrer bruker</button>
     </div>
@@ -34,7 +34,7 @@ function loggIn(){
         model.app.currentUserId = foundUser.id
         alert("Velkommen admin")
         goToPage('home')
-    }else if(foundUser && foundUser.role === "gjest"){
+    }else if(foundUser && (foundUser.role === "gjest" || "venn")){
         model.app.isLoggedIn = true
         model.app.currentUserId = foundUser.id
         goToPage('home')
@@ -42,9 +42,9 @@ function loggIn(){
 
         // gir feilmelding hvis felt er tomme
     }else if(!tempUserName || !tempPassWord){
-        alert("Skriv")
+        alert("Fyll in feltene med Brukernavn og Passord")
     }else{
-        alert("Feil passord")
+        alert("Feil brukernavn eller passord")
     }
     console.log(tempUserName,tempPassWord,model.app.isLoggedIn,foundUser.role);
 }
@@ -57,7 +57,7 @@ function registerUser(){
     );
     // gir feilmelding hvis felt er tomme
     if(!tempUserName || !tempPassWord){
-        alert("Skriv")
+        alert("Fyll in brukernavn og passord for å registrere")
 
     // hvis brukernavn er i bruk
     }else if(existingUser){
@@ -72,6 +72,6 @@ function registerUser(){
     //adder ny bruker til model
     model.data.users.push({id: userId,username: tempUserName,password: tempPassWord, role: "gjest"})
     alert("bruker lagd")
-    updateLoginView()
+    loggIn()
     console.log(model.data.users)}
 }
