@@ -44,21 +44,50 @@ function updateViewHome() {
   const rStatus = model.viewState.home.filterReadingStatus;
   const rStatusL = model.data.readingstatus;
 
+  /* Header */
+  /* Fjern gammel header før ny legges til */
+const existingHeader = document.querySelector(".header-bar");
+if (existingHeader) existingHeader.remove();
+
+/* Header */
+document.body.insertAdjacentHTML("afterbegin", `
+  <div class="header-bar">
+    <button onclick="toggleDarkMode()" class="mode-toggle">
+      ${model.app.darkMode ? "Library Mode" : "Book Mode"}
+    </button>
+
+    <div class="welcome-text">
+      ${
+        model.app.adminIsLoggedIn
+          ? "Velkommen, <strong>Admin</strong>"
+          : model.app.currentUser
+            ? `Velkommen, <strong>${model.app.currentUser}</strong>`
+            : "Velkommen til biblioteket!"
+      }
+    </div>
+
+    <button onclick="handleLoginLogout()" class="login-btn">
+      ${model.app.currentUser ? "Logg ut" : "Logg inn"}
+    </button>
+  </div>
+`);
+
+  /* TOP-BAR MED FILTRE, SØK OG SORTERING */
   const dateFilter = `
     <select onchange="model.viewState.home.filterByRelease = Number(this.value); sortDates();">
-      ${dateList.map(s => `
-        <option value="${s.id}" ${s.id == dates ? 'selected' : ''}>
+      ${model.data.dateState.map(s => `
+        <option value="${s.id}" ${s.id == dates ? "selected" : ""}>
           ${s.state}
-        </option>`).join('')}
+        </option>`).join("")}
     </select>
   `;
 
   const readingFilter = `
     <select onchange="model.viewState.home.filterReadingStatus = Number(this.value); filterByReadingStatus();">
-      ${rStatusL.map(s => `
-        <option value="${s.id}" ${s.id == rStatus ? 'selected' : ''}>
+      ${model.data.readingstatus.map(s => `
+        <option value="${s.id}" ${s.id == rStatus ? "selected" : ""}>
           ${s.status}
-        </option>`).join('')}
+        </option>`).join("")}
     </select>
   `;
 
@@ -67,17 +96,9 @@ function updateViewHome() {
       oninput="model.viewState.home.searchbar = this.value; filterBySearchbar()">
   `;
 
+  // === SELVE INNHOLDET I APP ===
   document.getElementById("app").innerHTML = `
     <div class="top-bar">
-      <button onclick="toggleDarkMode()">
-        ${model.app.darkMode ? " Book Mode " : " Library Mode"}
-      </button>
-      ${model.app.adminIsLoggedIn
-       ?`<button onclick="goToPage('admin')"> Admin panel </button>`
-       : model.app.isLoggedIn
-        ?`<button onclick="logOut()">Logg ut</button>`
-        :`<button onclick="goToPage('login')">Logg inn</button>`
-      }
       ${dateFilter}
       ${readingFilter}
       ${searchBar}

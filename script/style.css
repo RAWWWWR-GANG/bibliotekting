@@ -1,3 +1,68 @@
+/* === ØVERSTE HEADER-LINJE (utenfor #app) === */
+.header-bar {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(45, 33, 21, 0.92);
+  color: #f8e8c8;
+  padding: 10px 25px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  border-bottom: 1px solid #9b7a4f;
+  z-index: 50;
+}
+
+.login-btn {
+  margin-right: 40px; /* juster tallet til det ser perfekt ut hos deg */
+}
+
+/* Venstre og høyre knapper */
+.header-bar .mode-toggle,
+.header-bar .login-btn {
+  background-color: rgba(90, 65, 45, 0.95);
+  border: 1px solid #b8955b;
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 14px;
+  color: #f8e8c8;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.4);
+}
+
+.header-bar .mode-toggle:hover,
+.header-bar .login-btn:hover {
+  background-color: rgba(120, 90, 60, 0.9);
+  border-color: #e1c287;
+}
+
+/* Velkommen-tekst i midten */
+.header-bar .welcome-text {
+  font-family: "Merriweather", serif;
+  font-size: 16px;
+  color: #f8e8c8;
+  text-align: center;
+  flex: 1;
+}
+
+/* Mørk modus */
+.dark-mode .header-bar {
+  background-color: rgba(44, 32, 24, 0.95);
+  border-color: #b8976f;
+}
+
+.dark-mode .header-bar .mode-toggle,
+.dark-mode .header-bar .login-btn {
+  background-color: #8b5a2b;
+  border-color: #cfa873;
+}
+
+.dark-mode .header-bar .mode-toggle:hover,
+.dark-mode .header-bar .login-btn:hover {
+  background-color: #a66e3c;
+}
+
 .overview { 
 padding: 20px; 
 border-radius: 8px; 
@@ -236,11 +301,6 @@ text-align: center;
 color: #D4AF37; 
 } 
 
-.hidden { 
-display: none; 
-} 
-
-/* Topp-bar layout */ 
 .top-bar {
   display: flex;
   align-items: center;
@@ -278,21 +338,21 @@ display: none;
 /* Gjør søkefeltet større */ 
 .top-bar input[type="text"] {  
 min-width: 180px;
-background-color: #fffaf2;
-color: #2e1c0b; 
+background-color: rgba(60, 45, 30, 0.85);
+color: #f8e8c8; 
 } 
 
 /* DROPDOWNER I TOP-BAR */ 
 .top-bar select {    
-background-color: #fffaf2; 
-color: #2e1c0b;  
+background-color: rgba(60, 45, 30, 0.85); 
+color: #f8e8c8;  
 cursor: pointer; 
 } 
 
 .top-bar select:hover, 
 .top-bar input[type="text"]:hover {
-background-color: #f3e8d9; 
-border-color: #b28c5d; 
+background-color: #a66e3c; 
+border-color: #a66e3c; 
 } 
 
 /* BOOKISH MODE DROPDOWNER */ 

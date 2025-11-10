@@ -42,11 +42,14 @@ function updateRole(index,modifier){
     console.log(`${user.username} er nå ${user.role}`, index, currentIndex);
 }
 
-function logOut(){
-    model.app.adminIsLoggedIn = false
-    model.app.isLoggedIn = false
-    goToPage('home')
+function logOut() {
+  model.app.adminIsLoggedIn = false;
+  model.app.isLoggedIn = false;
+  model.app.currentUser = null;
+  goToPage('home');
 }
+
+
 
 // oppskrift på rolle testing
 /* function testRoles(){
