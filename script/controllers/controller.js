@@ -31,7 +31,10 @@ function saveNewBook(){
         img: "",
         rating: "",
         details: "",
-        readingStatus: 0
+        readingStatus: 0,
+        contentType: "",
+        contentURL: "",
+        _blobURL: "",
 
     };
 
@@ -49,7 +52,10 @@ function cancelRegisterBook(){
         img: "",
         rating: "",
         details: "",
-        readingStatus: 0
+        readingStatus: 0,
+        contentType: "",
+        contentURL: "",
+        _blobURL: "",
     };
     
     goToPage("home");

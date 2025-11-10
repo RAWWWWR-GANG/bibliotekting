@@ -52,6 +52,12 @@ function updateRegisterBook() {
   </select>
 </div>
 
+<label>PDF (lokal fil)</label>
+<input id="pdfInput" type="file" accept="application/pdf" onchange="handlePdfSelectLocal(event)">
+
+
+
+
     <button onclick="saveNewBook()">Lagre bok</button>
     <button onclick="goToPage('home')" class="secondary">Avbryt</button>
 
@@ -69,4 +75,29 @@ function updateRegisterBook() {
       </div>
     </div>
   `;
+}
+
+function handlePdfSelectLocal(evt){
+  const file = evt.target.files?.[0];
+  if (!file) return;
+
+  // Rydd opp forrige blob-URL
+  if (model.viewState.registerBook._blobURL) {
+    URL.revokeObjectURL(model.viewState.registerBook._blobURL);
+  }
+
+  const blobURL = URL.createObjectURL(file);
+  const v = model.viewState.registerBook;
+  v._blobURL    = blobURL;
+  v.contentType = 'pdf';
+  v.contentURL  = blobURL;
+  v._fileName   = file.name;
+
+  const statusEl = document.getElementById('pdfStatus');
+  if (statusEl) statusEl.textContent = `Valgt fil: ${file.name}`;
+
+  const previewEl = document.getElementById('pdfPreview');
+  if (previewEl) {
+    previewEl.innerHTML = `<p><a class="read-link" href="${blobURL}" target="_blank" rel="noopener">Les boken (PDF)</a></p>`;
+  }
 }

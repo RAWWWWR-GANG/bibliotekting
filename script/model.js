@@ -47,7 +47,11 @@ const model = {
             img: "",
             rating: "",
             details: "",
-            readingStatus: 0 // read, reading, unread
+            readingStatus: 0, // read, reading, unread
+            contentType: "",
+            contentURL: "",
+            _blobURL: "",
+            _fileName: "",
         }
     },
 
