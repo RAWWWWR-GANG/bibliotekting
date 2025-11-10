@@ -76,9 +76,9 @@ function applyTheme() {
 }
 
 function handleLoginLogout() {
-  if (model.app.currentUser) {
+  if (model.app.currentUserId) {
     // Logg ut
-    model.app.currentUser = null;
+    model.app.currentUserId = null;
     model.app.isLoggedIn = false;
     model.app.adminIsLoggedIn = false;
     goToPage("home");

@@ -43,6 +43,8 @@ function updateViewHome() {
   const dateList = model.data.dateState;
   const rStatus = model.viewState.home.filterReadingStatus;
   const rStatusL = model.data.readingstatus;
+  const loggedInUser = model.data.users.find(u => u.id == model.app.currentUserId)
+  console.log(loggedInUser)
 
   /* Header */
   /* Fjern gammel header før ny legges til */
@@ -60,15 +62,20 @@ document.body.insertAdjacentHTML("afterbegin", `
       ${
         model.app.adminIsLoggedIn
           ? "Velkommen, <strong>Admin</strong>"
-          : model.app.currentUser
-            ? `Velkommen, <strong>${model.app.currentUser}</strong>`
+          : model.app.currentUserId
+            ? `Velkommen, <strong>${loggedInUser.username}</strong>`
             : "Velkommen til biblioteket!"
       }
     </div>
 
-    <button onclick="handleLoginLogout()" class="login-btn">
-      ${model.app.currentUser ? "Logg ut" : "Logg inn"}
-    </button>
+    ${model.app.adminIsLoggedIn
+      ? `<button onclick="goToPage('admin')" class="login-btn">Admin panel</button>`
+      : `<button onclick="logOut()" class="login-btn">Logg ut</button>`}
+        
+        
+    
+      
+    
   </div>
 `);
 

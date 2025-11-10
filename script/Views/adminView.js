@@ -49,10 +49,12 @@ function updateRole(index,modifier){
 }
 
 function logOut() {
+if (model.app.currentUserId){
   model.app.adminIsLoggedIn = false;
   model.app.isLoggedIn = false;
   model.app.currentUser = null;
-  goToPage('home');
+  goToPage('login');
+}
 }
 
 

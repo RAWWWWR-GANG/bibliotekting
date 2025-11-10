@@ -46,7 +46,7 @@ function loggIn(){
     }else{
         alert("Feil brukernavn eller passord")
     }
-    console.log(tempUserName,tempPassWord,model.app.isLoggedIn,foundUser.role);
+    console.log(tempUserName,tempPassWord,model.app.isLoggedIn,foundUser.role,model.app.currentUserId);
 }
 
 function registerUser(){
