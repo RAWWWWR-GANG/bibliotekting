@@ -75,4 +75,17 @@ function applyTheme() {
     }
 }
 
+function handleLoginLogout() {
+  if (model.app.currentUser) {
+    // Logg ut
+    model.app.currentUser = null;
+    model.app.isLoggedIn = false;
+    model.app.adminIsLoggedIn = false;
+    goToPage("home");
+  } else {
+    // Gå til innlogging
+    goToPage("login");
+  }
+}
+
 
