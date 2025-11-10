@@ -479,3 +479,16 @@ margin: 2px 0;
 .hidden{
   display: none;
 }
+
+.read-link,
+.read-link:link,
+.read-link:visited,
+.read-link:hover,
+.read-link:active {
+  color: #1e90ff !important;
+  text-decoration: none;
+}
+
+.read-link:hover {
+  text-decoration: underline;
+}

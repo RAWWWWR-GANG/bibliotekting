@@ -83,7 +83,7 @@ function handleLoginLogout() {
     model.app.adminIsLoggedIn = false;
     goToPage("home");
   } else {
-    // Gå til innlogging
+    
     goToPage("login");
   }
 }
