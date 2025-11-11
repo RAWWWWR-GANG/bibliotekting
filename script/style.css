@@ -492,3 +492,49 @@ margin: 2px 0;
 .read-link:hover {
   text-decoration: underline;
 }
+/* === ADMIN PANEL === */
+.admin-panel {
+  padding: 20px;
+  background-color: rgba(60, 45, 30, 0.9);
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+}
+
+.admin-panel h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #f8e8c8;
+}
+
+.user-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.user-card {
+  background-color: rgba(80, 60, 40, 0.8);
+  border: 1px solid #9b7a4f;
+  border-radius: 8px;
+  padding: 12px 16px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+.user-card strong {
+  color: #f8e8c8;
+}
+
+.user-actions {
+  margin-top: 8px;
+}
+
+.user-actions button {
+  margin-right: 8px;
+}
+
+.admin-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
