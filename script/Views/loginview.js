@@ -2,6 +2,10 @@
     let tempPassWord = "";
 function updateLoginView(){
 
+    // Fjern header hvis den finnes (etter logout)
+    const existingHeader = document.querySelector(".header-bar");
+    if (existingHeader) existingHeader.remove();
+    
     document.getElementById('app').innerHTML = /*HTML*/ `
     
     <h2> Velkommen til Geir's bibilotek</h2>
