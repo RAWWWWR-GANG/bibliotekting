@@ -66,7 +66,7 @@ function registerUser(){
 
     //gir ny bruker en id basert på hvor mange brukere ekisterer
     for(i = 0; i < model.data.users.length; i++){
-    console.log(i)}
+    console.log("yoyoyoyo",i)}
     let userId= "user"+i
 
     //adder ny bruker til model
