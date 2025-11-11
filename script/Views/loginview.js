@@ -2,7 +2,7 @@
     let tempPassWord = "";
 function updateLoginView(){
 
-    // Fjern header hvis den finnes (etter logout)
+    /* Fjern header hvis den finnes etter logout */
     const existingHeader = document.querySelector(".header-bar");
     if (existingHeader) existingHeader.remove();
     

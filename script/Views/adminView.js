@@ -1,11 +1,14 @@
 function updateAdminView(){
     document.getElementById('app').innerHTML = /*HTML*/ `
-    <div id="users">
-    ${userGenerator()}
-    </div>
-    <div>
-    <button onclick="goToPage('home')">Tilbake</button>
-    <button onclick="logOut()">logg ut</button>
+    <div class="admin-panel">
+        <h2>Adminpanel</h2>
+        <div class="user-list">
+            ${userGenerator()}
+        </div>
+        <div class="admin-buttons">
+            <button onclick="goToPage('home')">Tilbake</button>
+            <button onclick="logOut()">Logg ut</button>
+        </div>
     </div>
     `
 }
@@ -17,21 +20,16 @@ function userGenerator(){
     let html = "";
     for (i = 0; i < users.length; i++){
         const user = users[i];
-        console.log(i)
         html += `
-        <div> 
-        <div>Bruker: ${user.username}</div>
-        rolle: ${user.role} 
-        
-        <button onclick="updateRole(${i},1)">Oppgrader</button> 
-        <button onclick="updateRole(${i},-1)">Nedgrader</button>
-    
-
-
-        
-        </div>`
+        <div class="user-card"> 
+            <div><strong>Bruker:</strong> ${user.username}</div>
+            <div><strong>Rolle:</strong> ${user.role}</div>
+            <div class="user-actions">
+                <button onclick="updateRole(${i},1)">Oppgrader</button> 
+                <button onclick="updateRole(${i},-1)">Nedgrader</button>
+            </div>
+        </div>`;
     }
-    html += `</div>`;
     return html;
 }
 
