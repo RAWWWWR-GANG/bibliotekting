@@ -45,7 +45,7 @@ function updateRegisterBook() {
 <div class="status-section">
   <label>Lesestatus</label>
   <select onchange="model.viewState.registerBook.readingStatus = Number(this.value)">
-    ${model.data.readingstatus.map(status => `
+    ${model.data.readingstatus.slice(0, -1).map(status => `
       <option value="${status.id}" ${status.id == model.viewState.registerBook.readingStatus ? "selected" : ""}>
         ${status.status}
       </option>`).join("")}

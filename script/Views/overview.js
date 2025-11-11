@@ -22,7 +22,7 @@ function editField(book) {
         // EDIT MODE
 
         const optionsHtml = (model.data.readingstatus ?? [])
-        .map(s => `
+        .slice(0, -1).map(s => `
             <option value="${s.id}" ${s.id === model.viewState.overView.readingStatus ? 'selected' : ''}>
                 ${s.status}
             </option>
