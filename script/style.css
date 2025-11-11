@@ -1,4 +1,4 @@
-/* === ØVERSTE HEADER-LINJE (utenfor #app) === */
+/* ØVERSTE HEADER-LINJE (utenfor #app) */
 .header-bar {
   position: relative;
   width: 100%;
@@ -90,12 +90,12 @@ cursor: pointer;
 /* GLOBAL STYLING */ 
 body {
 font-family: "Georgia", "Times New Roman", serif;
-background-color: #b3966b; /* dypere, gyllenbrun base */
+background-color: #b3966b; 
 background-image: url('../pictures/light-bookshelf.jpg');
 background-size: cover;
 background-position: center;
 background-attachment: fixed;
-color: #f8e8c8; /* myk bokpapirtekst */
+color: #f8e8c8; 
 margin: 0;
 padding: 0;
 transition: background-color 0.4s, color 0.4s;
@@ -105,11 +105,11 @@ transition: background-color 0.4s, color 0.4s;
 #app {
 max-width: 900px;
 margin: 40px auto;
-background: rgba(45, 33, 21, 0.85); /* halvgjennomsiktig mørk brun tone */
+background: rgba(45, 33, 21, 0.85); 
 padding: 25px 35px;
 border-radius: 10px;
 box-shadow: 0 3px 20px rgba(0, 0, 0, 0.3);
-color: #f8e8c8; /* myk, lys bokpapirtekst */
+color: #f8e8c8; /
 }
 
 h1, h2, h3 { 
@@ -122,10 +122,10 @@ margin-bottom: 15px;
 .book-card-title,
 h1,
 h2 {
-  color: #8b5a2b; /* varm gyllenbrun tekst */
+  color: #8b5a2b; 
 }
 
-/* Mørk modus beholder den lys bokpapirfargen */
+/* Mørk modus beholder den lyse "bokpapir" fargen */
 .dark-mode h1,
 .dark-mode h2,
 .dark-mode .book-card-title {
@@ -134,7 +134,7 @@ h2 {
 
 /* KNAPPER */
 button { 
-background-color: #9b6b3c; /* lærbrun */ 
+background-color: #9b6b3c; 
 color: #fff8e1; 
 border: none; 
 border-radius: 6px; 
@@ -149,7 +149,7 @@ button:hover {
 background-color: #b27d4a; 
 } 
 
-/* INPUT/TEXT/SELECT */
+/* Registrer bok Elementer INPUT/TEXT/SELECT  */
 input, textarea, select {
   width: 100%;
   padding: 6px 8px;
@@ -307,7 +307,7 @@ color: #D4AF37;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 8px;
-  background-color: rgba(60, 45, 30, 0.85); /* mørk trebrun */
+  background-color: rgba(60, 45, 30, 0.85); 
   border: 1px solid #9b7a4f;
   padding: 10px 15px;
   border-radius: 8px;
@@ -355,7 +355,7 @@ background-color: #a66e3c;
 border-color: #a66e3c; 
 } 
 
-/* BOOKISH MODE DROPDOWNER */ 
+/* BOOK MODE DROPDOWNER */ 
 .dark-mode .top-bar {
   background-color: rgba(255,255,255,0.05);
   border: none;
@@ -390,7 +390,7 @@ z-index: 2;
 opacity: 1; /* alltid synlig */ 
 } 
 
-/* Farger for status */ 
+/* Farger for lese status */ 
 .status-badge.unread {
   background-color: #d17c1d;
 }
@@ -439,7 +439,7 @@ color: inherit;
 margin: 2px 0; 
 } 
 
-/* Responsiv – mobil */ 
+/* Responsiv – mobil design */ 
 @media (max-width: 700px) {
   #app {
     margin: 0;
@@ -492,7 +492,7 @@ margin: 2px 0;
 .read-link:hover {
   text-decoration: underline;
 }
-/* === ADMIN PANEL === */
+/* ADMIN PANEL */
 .admin-panel {
   padding: 20px;
   background-color: rgba(60, 45, 30, 0.9);
